@@ -51,13 +51,25 @@ function getList () {
     }
 
     function rest () {
+        let rest;
+
         if (isEmpty()) {
             throw {
                 name: 'ListEmptyError',
                 message: 'Can not access elements of an empty list'
             }
         }
-        return list.slice(0, list.length - 1).map(e => e.value);
+
+        rest = getList();
+        
+        list.slice(0, list.length - 1)
+            .map(e => e.value).forEach(
+                (e) => {
+                    rest.makeList(e);
+                }
+            );
+
+        return rest;
     }
 
     function replaceTop (element) {
@@ -85,6 +97,8 @@ function getList () {
         return this;
     }
 
+
+
     return {
         makeList,
         isEmpty,
@@ -98,3 +112,15 @@ function getList () {
 export function emptyList () {
     return getList();
 }
+
+let list = emptyList();
+
+list = list.makeList(5)
+            .makeList(2)
+            .makeList(4)
+            .makeList(1)
+            .makeList(3);
+
+let rest = list.rest();
+
+console.log(rest.top());

@@ -20,10 +20,10 @@ list = list.makeList(5)
             .makeList(3);
 
 console.log(list.top()); // 3
-console.log(list.rest()); // [ 5, 2, 4, 1 ]
+console.log(list.rest()); // list obj: [ 5, 2, 4, 1 ]
 
 list = list.replaceTop(9);
 console.log(list.top()); // 9
 
 list = list.replaceRest([4, 3, 2, 6]);
-console.log(list.rest()); // [ 4, 3, 2, 6 ]
+console.log(list.rest()); // list obj: [ 4, 3, 2, 6 ]
