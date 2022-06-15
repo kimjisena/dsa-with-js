@@ -97,8 +97,6 @@ function getList () {
         return this;
     }
 
-
-
     return {
         makeList,
         isEmpty,
@@ -113,6 +111,26 @@ export function emptyList () {
     return getList();
 }
 
+// return the last element in a list
+function last(list) {
+
+    if (list.isEmpty()) {
+
+        throw {
+            name: 'ListEmptyError',
+            message: 'Can not access elements of an empty list'
+        }
+
+    } else if(list.rest().isEmpty()) {
+
+        return list.top();
+
+    } else {
+
+        return last(list.rest());
+    }
+}
+
 let list = emptyList();
 
 list = list.makeList(5)
@@ -124,3 +142,5 @@ list = list.makeList(5)
 let rest = list.rest();
 
 console.log(rest.top());
+
+console.log(last(list));
