@@ -37,7 +37,7 @@ function getList () {
     }
 
     function isEmpty () {
-        return list.length === 0 ? true : false;
+        return list.length === 0;
     }
 
     function top () {
