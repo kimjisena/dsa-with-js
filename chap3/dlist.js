@@ -28,39 +28,52 @@ function getDList () {
     }
 
     function makeListLeft (element) {
-        let v = element.value || element;
         element = {
             prev: null,
-            value: v,
+            value: element,
             next: 1
-        }
+        };
 
         dlist = [element].concat(
-            dlist.map(e => {
-            return {
-                prev: e.next - 1,
-                value: e.value,
-                next: e.next + 1
-            }
+            dlist.map((e, i, a) => {
+                let ele;
+                if (i === a.length - 1) {
+                    ele = {
+                        prev: i,
+                        value: e.value,
+                        next: null
+                    };
+                } else {
+                    ele = {
+                        prev: e.next - 1,
+                        value: e.value,
+                        next: e.next + 1
+                    };
+                }
+            return ele;
         }));
 
         return this;
     }
 
     function makeListRight (element) {
-        let v = element.value || element, ele;
+        let ele;
 
-        if (isEmpty() && v) {
-            dlist.push(element);
-        } else if (v) {
-            dlist.push(element);
+        if (isEmpty()) {
+            ele = {
+                prev: null,
+                value: element,
+                next: 1
+            };
+            dlist.push(ele);
         } else {
             ele = {
                 prev: dlist.length - 1,
                 value: element,
                 next: null
-            }
-            dlist[dlist.length - 1].next = length;
+            };
+
+            dlist[dlist.length - 1].next = dlist.length;
             dlist.push(ele);
         }
 
@@ -68,28 +81,31 @@ function getDList () {
     }
 
     function firstLeft () {
-        return dlist[0];
+        if (isEmpty()) {
+            throw {
+                name: 'DListEmptyError',
+                message: 'Can not access elements of an empty dlist'
+            };
+        }
+
+        return dlist[0].value;
     }
 
     function restLeft () {
-        let rest = getDList();
-        dlist.filter((_, i, a) => i !== 0)
-            .forEach((e, i, a) => {
-                if (i === 0) {
-                    e = {
-                        prev: null,
-                        value: e.value,
-                        next: i + 1
-                    };
-                } else {
-                    e = {
-                        prev: i - 1,
-                        value: e.value,
-                        next: i + i
-                    };
-                }
+        let rest;
 
-                rest.makeListRight(e);
+        if (isEmpty()) {
+            throw {
+                name: 'DListEmptyError',
+                message: 'Can not access elements of an empty dlist'
+            };
+        }
+
+        rest = getDList();
+
+        dlist.filter((_, i) => i !== 0)
+            .forEach((e, i, a) => {
+                rest.makeListRight(e.value);
             });
 
         return rest;
@@ -97,18 +113,30 @@ function getDList () {
     }
 
     function firstRight () {
-        return dlist[dlist.length - 1];
+        if (isEmpty()) {
+            throw {
+                name: 'DListEmptyError',
+                message: 'Can not access elements of an empty dlist'
+            };
+        }
+        return dlist[dlist.length - 1].value;
     }
 
     function restRight () {
-        let rest = getDList();
+        let rest;
+
+        if (isEmpty()) {
+            throw {
+                name: 'DListEmptyError',
+                message: 'Can not access elements of an empty dlist'
+            };
+        }
+
+        rest = getDList();
 
         dlist.filter((_, i, a) => i < a.length - 1)
-            .forEach((e, i, a) => {
-                if (i === a.length - 1) {
-                    e.next = null;
-                }
-                rest.makeListRight(e);
+            .forEach((e) => {
+                rest.makeListRight(e.value);
             });
 
         return rest;
@@ -128,31 +156,3 @@ function getDList () {
 export function emptyDList () {
     return getDList();
 }
-
-// testing doubly linked list functionality
-
-let dlist = emptyDList();
-
-console.log(dlist.isEmpty()); // true
-
-dlist = dlist.makeListLeft(5)
-        .makeListLeft(2)
-        .makeListLeft(4)
-        .makeListLeft(1)
-        .makeListLeft(3);
-
-console.log(dlist.isEmpty()); // false
-console.log(dlist.firstLeft()); // 3
-console.log(dlist.firstRight()); // 5
-
-let dleft = dlist.restLeft();
-
-console.log(dleft.isEmpty()); // false
-console.log(dleft.firstLeft()); // 1
-console.log(dleft.firstRight()); // 5
-
-let dright = dlist.restRight();
-
-console.log(dright.isEmpty()); // false
-console.log(dright.firstLeft()); // 3
-console.log(dright.firstRight()); // 2
