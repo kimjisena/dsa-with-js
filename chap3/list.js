@@ -45,7 +45,7 @@ function getList () {
             throw {
                 name: 'ListEmptyError',
                 message: 'Can not access elements of an empty list'
-            }
+            };
         }
         return list[list.length - 1].value;
     }
@@ -57,7 +57,7 @@ function getList () {
             throw {
                 name: 'ListEmptyError',
                 message: 'Can not access elements of an empty list'
-            }
+            };
         }
 
         rest = getList();
@@ -121,7 +121,7 @@ export function last (list) {
         throw {
             name: 'ListEmptyError',
             message: 'Can not access elements of an empty list'
-        }
+        };
 
     } else if(list.rest().isEmpty()) {
 

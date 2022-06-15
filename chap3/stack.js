@@ -34,7 +34,7 @@ function getStack() {
             throw {
                 name: 'StackEmptyError',
                 message: 'Can not access elements of an empty stack'
-            }
+            };
         }
         return stack[stack.length - 1];
     }
@@ -44,7 +44,7 @@ function getStack() {
             throw {
                 name: 'StackEmptyError',
                 message: 'Can not access elements of an empty stack'
-            }
+            };
         }
         stack.pop();
         return this;
