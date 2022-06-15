@@ -107,12 +107,14 @@ function getList () {
     }
 }
 
+
+// the empty list
 export function emptyList () {
     return getList();
 }
 
 // return the last element in a list
-function last(list) {
+export function last (list) {
 
     if (list.isEmpty()) {
 
@@ -131,16 +133,11 @@ function last(list) {
     }
 }
 
-let list = emptyList();
-
-list = list.makeList(5)
-            .makeList(2)
-            .makeList(4)
-            .makeList(1)
-            .makeList(3);
-
-let rest = list.rest();
-
-console.log(rest.top());
-
-console.log(last(list));
+// append list_2 to list_1
+export function append (list_1, list_2) {
+    if (list_2.isEmpty()) {
+        return list_1;
+    } else {
+        return append(list_2.rest(), list_1).makeList(list_2.top());
+    }
+}

@@ -1,4 +1,4 @@
-import { emptyList } from "./list";
+import { emptyList, last, append } from "./list";
 
 // testing linked list functionality
 
@@ -27,3 +27,10 @@ console.log(list.top()); // 9
 
 list = list.replaceRest([4, 3, 2, 6]);
 console.log(list.rest()); // list obj: [ 4, 3, 2, 6 ]
+
+
+let rest = list.rest();
+
+console.log(last(list)); // 5
+
+console.log(append(list, rest).top()); // 1
