@@ -12,126 +12,161 @@
  */
 
  function getCDList () {
-    let cdlist = [];
+
+    let list = [],
+        left, right;
 
     function isEmpty () {
-        return cdlist.length === 0;
+        return !(list.length);
     }
 
     function makeListLeft (element) {
 
+        let listLeft;
+
+        if ((element.list !== undefined) && 
+            (element.right !== undefined) && 
+            (element.left !== undefined)) {
+
+            list = element.list;
+            right = element.right;
+            left = element.left;
+
+            return this;
+        }
+
         element = {
-            prev: null,
+            prev: right,
             value: element,
-            next: isEmpty() ? 0 : 1
+            next: null
+        }
+
+        if (isEmpty()) {
+            left = right = 0;
+            list.push(element);
+
+        } else {
+            element.next = left;
+            list.push(element);
+            list[left].prev = list.length - 1;
+            left = list.length - 1;
+        }
+
+        listLeft = {
+            list,
+            right,
+            left
         };
 
-        cdlist = [element].concat(
-            cdlist.map((e, i, a) => {
-                let ele;
-                if (i === a.length - 1) {
-                    ele = {
-                        prev: i,
-                        value: e.value,
-                        next: 0
-                    };
-                } else {
-                    ele = {
-                        prev: e.next - 1,
-                        value: e.value,
-                        next: e.next + 1
-                    };
-                }
-            return ele;
-        }));
-        cdlist[0].prev = cdlist.length - 1;
-        return this;
+        return getCDList().makeListLeft(listLeft);
     }
 
     function makeListRight (element) {
-        let ele;
 
-        if (isEmpty()) {
-            ele = {
-                prev: 0,
-                value: element,
-                next: 0
-            };
-            cdlist.push(ele);
-        } else {
-            ele = {
-                prev: cdlist.length - 1,
-                value: element,
-                next: 0
-            };
+        let listRight;
 
-            cdlist[cdlist.length - 1].next = cdlist.length;
-            cdlist.push(ele);
+        if ((element.list !== undefined) && 
+            (element.right !== undefined) && 
+            (element.left !== undefined)) {
+
+            list = element.list;
+            right = element.right;
+            left = element.left;
+
+            return this;
+            }
+
+        element = {
+            prev: null,
+            value: element,
+            next: left
         }
 
-        return this;
+        if (isEmpty()) {
+            left = right = 0;
+            list.push(element);
+        } else {
+            element.prev = right;
+            list.push(element);
+            list[right].next = list.length - 1;
+            right = list.length - 1;
+        }
+
+        listRight = {
+            list,
+            right,
+            left
+        };
+
+        return getCDList().makeListRight(listRight);
+
     }
 
     function firstLeft () {
         if (isEmpty()) {
             throw {
                 name: 'DListEmptyError',
-                message: 'Can not access elements of an empty cdlist'
+                message: 'Can not access elements of an empty dlist'
             };
-        }
+        } 
 
-        return cdlist[0].value;
+        return list[left].value;
     }
 
     function restLeft () {
-        let rest;
+        let rest,
+            next;
 
         if (isEmpty()) {
             throw {
                 name: 'DListEmptyError',
-                message: 'Can not access elements of an empty cdlist'
+                message: 'Can not access elements of an empty dlist'
             };
         }
+        next = list[left].next;
+        list[next].prev = null;
 
-        rest = getCDList();
+        rest = {
+            list,
+            left: next,
+            right
+        };
 
-        cdlist.filter((_, i) => i !== 0)
-            .forEach((e, i, a) => {
-                rest.makeListRight(e.value);
-            });
-
-        return rest;
-
+        return getCDList().makeListLeft(rest);
     }
 
     function firstRight () {
+
         if (isEmpty()) {
             throw {
                 name: 'DListEmptyError',
-                message: 'Can not access elements of an empty cdlist'
+                message: 'Can not access elements of an empty dlist'
             };
         }
-        return cdlist[cdlist.length - 1].value;
+
+        return list[right].value;
     }
 
     function restRight () {
-        let rest;
+        let rest,
+        prev;
 
         if (isEmpty()) {
             throw {
                 name: 'DListEmptyError',
-                message: 'Can not access elements of an empty cdlist'
+                message: 'Can not access elements of an empty dlist'
             };
         }
+        prev = list[right].prev;
+        list[prev].next = null;
 
-        rest = getCDList();
+        rest = {
+            list,
+            left,
+            right: prev
+        };
 
-        cdlist.filter((_, i, a) => i < a.length - 1)
-            .forEach((e) => {
-                rest.makeListRight(e.value);
-            });
-
-        return rest;
+        return getCDList().makeListRight(rest);
     }
 
     return {
@@ -139,10 +174,10 @@
         makeListLeft,
         makeListRight,
         firstLeft,
-        restLeft,
         firstRight,
+        restLeft,
         restRight
-    }
+    };
 }
 
 export function emptyCDList () {
