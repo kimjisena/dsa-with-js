@@ -1,180 +1,194 @@
-function getList () {
-    let list = {};
+/**
+ * doubly linked lists
+ * 
+ * a doubly linked list can be used to when working with a list of web pages
+ * where each page has content, a pointer to the next page and a pointer 
+ * to the previous page
+ * 
+ * doubly linked list constructors
+ * 1. `emptyDList()` - returns an empty doubly linked list
+ * 2. `dlist.makeListLeft(element)` - return a new dlist with element added to the left
+ * 3. `dlist.makeListRight(element)` - return a new dlist with element added to the right
+ * 
+ * doubly linked list selectors
+ * 1. `dlist.firstLeft()` - return the leftmost element
+ * 2. `dlist.restLeft()` - return a new dlist with all elements except the leftmost
+ * 3. `dlist.firstRight()` - return the rightmost element
+ * 4. `dlist.restRight()` - return a new dlist with all elements except the rightmost
+ * 
+ * doubly linked list condition
+ * - `dlist.isEmpty()` - returns false if dlist is non-empty
+ */
+
+function getDList () {
+
+    let list = [],
+        left, right;
 
     function isEmpty () {
-        return list.value === undefined;
+        return !(list.length);
     }
 
-    function makeList (element) {
+    function makeListLeft (element) {
+
+        let listLeft;
+
+        if ((element.list !== undefined) && 
+            (element.right !== undefined) && 
+            (element.left !== undefined)) {
+
+            list = element.list;
+            right = element.right;
+            left = element.left;
+
+            return this;
+        }
+
+        element = {
+            prev: null,
+            value: element,
+            next: null
+        }
+
         if (isEmpty()) {
-            list.value = element;
-            list.next = null;
+            left = right = 0;
+            list.push(element);
+
         } else {
-            let next = list;
-            while(true) {
-                if (next.next === null) {
-                    break;
-                }
-                next = next.next;
-            }
-
-            next.next = {
-                value: element,
-                next: null
-            };
+            element.next = left;
+            list.push(element);
+            list[left].prev = list.length - 1;
+            left = list.length - 1;
         }
 
-        return this;
+        listLeft = {
+            list,
+            right,
+            left
+        };
+
+        return getDList().makeListLeft(listLeft);
     }
 
-    function top () {
+    function makeListRight (element) {
+
+        let listRight;
+
+        if ((element.list !== undefined) && 
+            (element.right !== undefined) && 
+            (element.left !== undefined)) {
+
+            list = element.list;
+            right = element.right;
+            left = element.left;
+
+            return this;
+            }
+
+        element = {
+            prev: null,
+            value: element,
+            next: null
+        }
+
+        if (isEmpty()) {
+            left = right = 0;
+            list.push(element);
+        } else {
+            element.prev = right;
+            list.push(element);
+            list[right].next = list.length - 1;
+            right = list.length - 1;
+        }
+
+        listRight = {
+            list,
+            right,
+            left
+        };
+
+        return getDList().makeListRight(listRight);
+
+    }
+
+    function firstLeft () {
         if (isEmpty()) {
             throw {
-                name: 'ListEmptyError',
-                message: 'Can not access elements of an empty list'
+                name: 'DListEmptyError',
+                message: 'Can not access elements of an empty dlist'
             };
-        }
-        return list.value;
+        } 
+
+        return list[left].value;
     }
 
-    function rest () {
-        let rest, next;
+    function restLeft () {
+        let rest,
+            next;
 
         if (isEmpty()) {
             throw {
-                name: 'ListEmptyError',
-                message: 'Can not access elements of an empty list'
+                name: 'DListEmptyError',
+                message: 'Can not access elements of an empty dlist'
+            };
+        }
+        next = list[left].next;
+        list[next].prev = null;
+
+        rest = {
+            list,
+            left: next,
+            right
+        };
+
+        return getDList().makeListLeft(rest);
+    }
+
+    function firstRight () {
+
+        if (isEmpty()) {
+            throw {
+                name: 'DListEmptyError',
+                message: 'Can not access elements of an empty dlist'
             };
         }
 
-        rest = getList();
-        next = list.next;
-        while (true) {
-            if (next === null) {
-                break;
-            }
-
-            rest.makeList(next.value);
-
-            if (next.next === null) {
-                break;
-            }
-            next = next.next;
-        }
-
-        return rest;
+        return list[right].value;
     }
 
-    function replaceTop (element) {
-        let tail, 
-            list = getList();
+    function restRight () {
+        let rest,
+        prev;
 
-        tail = rest();
-        list.makeList(element);
-        while (true) {
-            list.makeList(tail.top());
-            tail = tail.rest();
-            if (tail.isEmpty()) {
-                return list;
-            }
+        if (isEmpty()) {
+            throw {
+                name: 'DListEmptyError',
+                message: 'Can not access elements of an empty dlist'
+            };
         }
-    }
+        prev = list[right].prev;
+        list[prev].next = null;
 
-    function replaceRest (...rest) {
-        let head, list = getList();
+        rest = {
+            list,
+            left,
+            right: prev
+        };
 
-        head = top();
-        list.makeList(head);
-        for (let ele of rest) {
-            list.makeList(ele);
-        }
-        return list;
+        return getDList().makeListRight(rest);
     }
 
     return {
         isEmpty,
-        makeList,
-        top,
-        rest,
-        replaceTop,
-        replaceRest
+        makeListLeft,
+        makeListRight,
+        firstLeft,
+        firstRight,
+        restLeft,
+        restRight
     };
 }
 
-export function emptyList () {
-    return getList();
+export function emptyDList () {
+    return getDList();
 }
-
-// return the last element in a list
-export function last (list) {
-
-    if (list.isEmpty()) {
-
-        throw {
-            name: 'ListEmptyError',
-            message: 'Can not access elements of an empty list'
-        };
-
-    } else if(list.rest().isEmpty()) {
-
-        return list.top();
-
-    } else {
-
-        return last(list.rest());
-    }
-}
-
-// append list_2 to list_1
-export function append (list_1, list_2) {
-    if (list_1.isEmpty()) {
-        return list_2;
-    } else {
-        return append(list_1.rest(), list_2).makeList(list_1.top());
-    }
-}
-
-// testing linked list functionality
-
-let list = emptyList();
-
-try {
-    list.rest();
-} catch(e) {
-    console.log(e.name); // ListEmptyError
-}
-
-console.log(list.isEmpty()); // true
-
-list = list.makeList(5)
-            .makeList(2)
-            .makeList(4)
-            .makeList(1)
-            .makeList(3);
-
-console.log(list.top()); // 5
-
-let rest = list.rest();
-console.log(rest.isEmpty()); // false
-console.log(rest.top()); // 2
-
-let list2 = emptyList().makeList(1);
-let rest2 = list2.rest();
-
-try {
-    list2.rest().top();
-} catch(e) {
-    console.log(e.name); // ListEmptyError
-}
-
-let replaced = list.replaceTop(9);
-console.log(replaced.top()); // 9
-
-let replaced1 = replaced.replaceRest(6, 2, 3, 4);
-console.log(replaced1.top()); // 9
-console.log(replaced1.rest().top()); // 6
-
-console.log(last(replaced1)); // 4
-
-//let appended = append(list, rest);
-//console.log(appended.top());

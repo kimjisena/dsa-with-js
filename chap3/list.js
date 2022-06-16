@@ -6,7 +6,7 @@
  * 
  * linked list constructors
  * 1. `emptyList()` - returns the empty list
- * 2. `list.makeList(element)` - puts element at the top of the list
+ * 2. `list.makeList(element)` - puts element at the rear of the list
  * 
  * linked list condition
  * - `list.isEmpty()` - returns false if list is non-empty

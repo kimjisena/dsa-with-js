@@ -3,41 +3,42 @@ import {emptyDList} from './dlist';
 
 // testing doubly linked list functionality
 
-let dlist = emptyDList();
 
-console.log(dlist.isEmpty()); // true
+let list = emptyDList();
+console.log(list.isEmpty()); // true
 
-dlist = dlist.makeListLeft(5)
-        .makeListLeft(2)
-        .makeListLeft(4)
-        .makeListLeft(1)
-        .makeListLeft(3);
+ list = list.makeListLeft(5)
+         .makeListLeft(2)
+         .makeListLeft(4)
+         .makeListLeft(1)
+         .makeListLeft(3);
 
-console.log(dlist.isEmpty()); // false
-console.log(dlist.firstLeft()); // 3
-console.log(dlist.firstRight()); // 5
+ console.log(list.isEmpty()); //false
+ console.log(list.firstLeft()); // 3
+ console.log(list.firstRight()); // 5
 
-let dleft = dlist.restLeft();
+let left = list.restLeft();
 
-console.log(dleft.isEmpty()); // false
-console.log(dleft.firstLeft()); // 1
-console.log(dleft.firstRight()); // 5
+console.log(left.isEmpty()); // false
+console.log(left.firstLeft()); // 1
+console.log(left.firstRight()); // 5
 
-let dright = dlist.restRight();
+let right = list.restRight();
 
-console.log(dright.isEmpty()); // false
-console.log(dright.firstLeft()); // 3
-console.log(dright.firstRight()); // 2
+console.log(right.isEmpty()); // false
+console.log(right.firstLeft()); // 3
+console.log(right.firstRight()); // 2
 
 // test with makeListRight()
-let dlist2 = emptyDList();
+ let list2 = emptyDList();
+ console.log(list2.isEmpty()); // true
 
-dlist2 = dlist2.makeListRight(3)
-        .makeListRight(1)
-        .makeListRight(4)
-        .makeListRight(2)
-        .makeListRight(5);
+ list2 = list2.makeListRight(3)
+         .makeListRight(1)
+         .makeListRight(4)
+         .makeListRight(2)
+         .makeListRight(5);
 
-console.log(dlist2.isEmpty()); // false
-console.log(dlist2.firstLeft()); // 3
-console.log(dlist2.firstRight()); // 5
+ console.log(list2.isEmpty()); // false
+ console.log(list2.firstLeft()); // 3
+ console.log(list.firstRight()); // 5
