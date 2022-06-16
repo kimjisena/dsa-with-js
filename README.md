@@ -9,10 +9,12 @@ Birmingham, Birmingham, UK - as a guide, but most of my learning will come from 
 of the web.
 
 ## Objectives
+1. To be able to identify a DSA with a problem specification
+2. To port my understanding of DSAs to other programming tools
+3. To develop intuition on performance cost of an algorithm
+4. To have fun
+
+## Goals
 1. Cement my understanding of JavaScript
 2. Understand common DSAs and their nuances
 3. Implement common DSAs using JavaScript
-
-## Goals
-1. To be able to identify a DSA with a problem specification
-2. To port my understanding of DSAs to other programming tools
