@@ -6,18 +6,18 @@
  * to the previous page
  * 
  * doubly linked list constructors
- * 1. emptyDList() - returns an empty doubly linked list
- * 2. dlist.makeListLeft(element) - return a new dlist with element added to the left
- * 3. dlist.makeListRight(element) - return a new dlist with element added to the right
+ * 1. `emptyDList()` - returns an empty doubly linked list
+ * 2. `dlist.makeListLeft(element)` - return a new dlist with element added to the left
+ * 3. `dlist.makeListRight(element)` - return a new dlist with element added to the right
  * 
  * doubly linked list selectors
- * 1. dlist.firstLeft() - return the leftmost element
- * 2. dlist.restLeft() - return a new dlist with all elements except the leftmost
- * 3. dlist.firstRight() - return the rightmost element
- * 4. dlist.restRight() - return a new dlist with all elements except the rightmost
+ * 1. `dlist.firstLeft()` - return the leftmost element
+ * 2. `dlist.restLeft()` - return a new dlist with all elements except the leftmost
+ * 3. `dlist.firstRight()` - return the rightmost element
+ * 4. `dlist.restRight()` - return a new dlist with all elements except the rightmost
  * 
  * doubly linked list condition
- * 1. dlist.isEmpty() - returns false if dlist is non-empty
+ * - `dlist.isEmpty()` - returns false if dlist is non-empty
  */
 
 function getDList () {

@@ -7,8 +7,8 @@
  * 
  * same operations as a doubly linked list except
  * 
- * first.prev = last
- * last.next = first
+ * - `first.prev` = `last`
+ * - `last.next` = `first`
  */
 
  function getCDList () {

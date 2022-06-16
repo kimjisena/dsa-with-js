@@ -9,9 +9,9 @@
  * 1. if there is no `j` such that `a[j]` is `x`, then `i` is -1
  * 2. otherwise, `i` is any `j` for which `a[j]` is `x`
  * 
- * time complexity: O(n)
- * worst case: n iterations
- * average case: n/2 iterations
+ * time complexity: `O(n)`
+ * - worst case: `n` iterations
+ * - average case: `n/2` iterations
  */
 
 export function linear(a, x) {
