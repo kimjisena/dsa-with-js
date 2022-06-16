@@ -20,33 +20,46 @@
  * 2. `list.replaceRest(rest)` - replaces the rest of the list with `rest`
  */
 
+
  function getList () {
-    let list = {};
+    let list = [],
+        first = -1;
 
     function isEmpty () {
-        return list.value === undefined;
+        return first < 0;
     }
 
     function makeList (element) {
-        if (isEmpty()) {
-            list.value = element;
-            list.next = null;
-        } else {
-            let next = list;
-            while(true) {
-                if (next.next === null) {
-                    break;
-                }
-                next = next.next;
+        let next;
+
+        if (element.list !== undefined &&
+            element.first !== undefined) {
+
+            list = element.list;
+            first = element.first;
+            return this;
             }
 
-            next.next = {
-                value: element,
-                next: null
-            };
+        element = {
+            value: element,
+            next: null
+        };
+
+        if (isEmpty()) {
+            list[0] = element;
+            first++;
+        } else {
+            list[first].next = first + 1;
+            first++;
+            list[first] = element;
         }
 
-        return this;
+        next = {
+            list,
+            first
+        };
+
+        return getList().makeList(next);
     }
 
     function top () {
@@ -56,11 +69,11 @@
                 message: 'Can not access elements of an empty list'
             };
         }
-        return list.value;
+        return list[first].value;
     }
 
     function rest () {
-        let rest, next;
+        let rest;
 
         if (isEmpty()) {
             throw {
@@ -69,48 +82,39 @@
             };
         }
 
-        rest = getList();
-        next = list.next;
-        while (true) {
-            if (next === null) {
-                break;
-            }
-
-            rest.makeList(next.value);
-
-            if (next.next === null) {
-                break;
-            }
-            next = next.next;
+        try {
+            list[first - 1].next = null;
+        } catch(e) {
+            null;
         }
 
-        return rest;
+        rest = {
+            list,
+            first: first - 1
+        };
+
+        return getList().makeList(rest);
     }
 
     function replaceTop (element) {
-        let tail, 
-            list = getList();
-
-        tail = rest();
-        list.makeList(element);
-        while (true) {
-            list.makeList(tail.top());
-            tail = tail.rest();
-            if (tail.isEmpty()) {
-                return list;
-            }
+        list[first] = {
+            value: element,
+            next: null
         }
+
+        return this;
     }
 
     function replaceRest (...rest) {
-        let head, list = getList();
+        let front = top(), 
+            rear = getList();
 
-        head = top();
-        list.makeList(head);
-        for (let ele of rest) {
-            list.makeList(ele);
+        for (let i = rest.length - 1; i >= 0; i--) {
+            rear.makeList(rest[i]);
         }
-        return list;
+
+        rear.makeList(front);
+        return rear;
     }
 
     return {
