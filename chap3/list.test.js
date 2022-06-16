@@ -1,17 +1,17 @@
 import { emptyList, last, append } from "./list";
 
+
 // testing linked list functionality
 
 let list = emptyList();
 
-console.log(list.isEmpty()); // true
-
 try {
-    list.top();
+    list.rest();
 } catch(e) {
     console.log(e.name); // ListEmptyError
-    console.log(e.message); // Can not access elements of an empty list
 }
+
+console.log(list.isEmpty()); // true
 
 list = list.makeList(5)
             .makeList(2)
@@ -19,18 +19,29 @@ list = list.makeList(5)
             .makeList(1)
             .makeList(3);
 
-console.log(list.top()); // 3
-console.log(list.rest()); // list obj: [ 5, 2, 4, 1 ]
-
-list = list.replaceTop(9);
-console.log(list.top()); // 9
-
-list = list.replaceRest([4, 3, 2, 6]);
-console.log(list.rest()); // list obj: [ 4, 3, 2, 6 ]
-
+console.log(list.top()); // 5
 
 let rest = list.rest();
+console.log(rest.isEmpty()); // false
+console.log(rest.top()); // 2
 
-console.log(last(list)); // 5
+let list2 = emptyList().makeList(1);
+let rest2 = list2.rest();
 
-console.log(append(list, rest).top()); // 1
+try {
+    list2.rest().top();
+} catch(e) {
+    console.log(e.name); // ListEmptyError
+}
+
+let replaced = list.replaceTop(9);
+console.log(replaced.top()); // 9
+
+let replaced1 = replaced.replaceRest(6, 2, 3, 4);
+console.log(replaced1.top()); // 9
+console.log(replaced1.rest().top()); // 6
+
+console.log(last(replaced1)); // 4
+
+let appended = append(rest, list);
+console.log(appended.top()); // 5

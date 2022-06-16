@@ -1,26 +1,4 @@
-/**
- * linked lists
- * 
- * a linked list is an ordered list of elements in which each has a reference
- * to the next element in the list or to the empty list
- * 
- * linked list constructors
- * 1. `emptyList()` - returns the empty list
- * 2. `list.makeList(element)` - puts element at the top of the list
- * 
- * linked list condition
- * - `list.isEmpty()` - returns false if list is non-empty
- * 
- * linked list accessors
- * 1. `list.top()` - returns the element at the top of the list
- * 2. `list.rest()` - returns the rest of the list without the top element
- * 
- * linked list mutators
- * 1. `list.replaceTop(element)` - replaces the top element with `element`
- * 2. `list.replaceRest(rest)` - replaces the rest of the list with `rest`
- */
-
- function getList () {
+function getList () {
     let list = {};
 
     function isEmpty () {
@@ -123,7 +101,6 @@
     };
 }
 
-// the empty list
 export function emptyList () {
     return getList();
 }
@@ -148,7 +125,7 @@ export function last (list) {
     }
 }
 
-// append list_1 to list_2
+// append list_2 to list_1
 export function append (list_1, list_2) {
     if (list_1.isEmpty()) {
         return list_2;
@@ -156,3 +133,48 @@ export function append (list_1, list_2) {
         return append(list_1.rest(), list_2).makeList(list_1.top());
     }
 }
+
+// testing linked list functionality
+
+let list = emptyList();
+
+try {
+    list.rest();
+} catch(e) {
+    console.log(e.name); // ListEmptyError
+}
+
+console.log(list.isEmpty()); // true
+
+list = list.makeList(5)
+            .makeList(2)
+            .makeList(4)
+            .makeList(1)
+            .makeList(3);
+
+console.log(list.top()); // 5
+
+let rest = list.rest();
+console.log(rest.isEmpty()); // false
+console.log(rest.top()); // 2
+
+let list2 = emptyList().makeList(1);
+let rest2 = list2.rest();
+
+try {
+    list2.rest().top();
+} catch(e) {
+    console.log(e.name); // ListEmptyError
+}
+
+let replaced = list.replaceTop(9);
+console.log(replaced.top()); // 9
+
+let replaced1 = replaced.replaceRest(6, 2, 3, 4);
+console.log(replaced1.top()); // 9
+console.log(replaced1.rest().top()); // 6
+
+console.log(last(replaced1)); // 4
+
+//let appended = append(list, rest);
+//console.log(appended.top());
