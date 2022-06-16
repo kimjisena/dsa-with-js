@@ -106,3 +106,11 @@ export function makeBT (v, l, r) {
     }
     return getBT(v, l, r);
 }
+
+// get size of a tree i.e number of nodes
+export function size (tree) {
+    if (tree.isEmpty()) {
+        return 0;
+    }
+    return (1 + size(tree.left()) + size(tree.right()));
+}
