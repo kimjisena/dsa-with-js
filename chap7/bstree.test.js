@@ -48,10 +48,11 @@ let result = `
 `
 
 // test search functionality
-let has;
+let recur_has, iter_has;
 import('./bstree.js')
     .then(m => {
-        has = m.isIn
+        recur_has = m.recur_isIn;
+        iter_has = m.iter_isIn;
     });
 
 console.clear();

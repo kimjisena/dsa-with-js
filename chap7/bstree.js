@@ -69,8 +69,8 @@ export function insert (v, bstree) {
     }
 }
 
-// searching
-export function isIn(v, bstree) {
+// searching: recursive
+export function recur_isIn (v, bstree) {
     if (bstree.isEmpty()) {
         return false;
     } else if (v === bstree.root()) {
@@ -80,4 +80,16 @@ export function isIn(v, bstree) {
     } else {
         return isIn(v, bstree.right());
     }
+}
+
+// searching: iterative
+export function iter_isIn (v, bstree) {
+    while (!bstree.isEmpty() && v !== bstree.root()) {
+        if (v < bstree.root()) {
+            bstree = bstree.left();
+        } else {
+            bstree = bstree.right();
+        }
+    }
+    return !bstree.isEmpty();
 }
