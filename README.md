@@ -31,7 +31,7 @@ that is JavaScript.
 
 In his [autobiography](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwipjvyz4bT4AhUOi_0HHWSND6IQFnoECAoQAQ&url=https%3A%2F%2Fwww.amazon.com%2FJust-Fun-Story-Accidental-Revolutionary%2Fdp%2F0066620732&usg=AOvVaw04A37d2YTfQgFL_DV0BG9I), Linus Torvalds (hallowed be his name) speaks of 
 Tanenbaum's [Operating Systems... oh never mind: The Minix Book](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjXr7PA4bT4AhX5lP0HHYKhDMAQFnoECAsQAQ&url=https%3A%2F%2Fwww.amazon.com%2FOperating-Systems-Design-Implementation-3rd%2Fdp%2F0131429388&usg=AOvVaw1QOYJxAO5KE97GCN8JuE9g) as the book that changed his life. 
-And I have read books before, but I'd never thought a book to be life changing until, 
+I have read books before, but I've never thought a book to be life changing until, 
 well you guessed it, until I read Douglas (oh, and his [blog](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiHgKH84bT4AhWs_rsIHWSCAh4QFnoECA4QAQ&url=https%3A%2F%2Fwww.crockford.com%2F&usg=AOvVaw05YjezyHx7aiLm_SRDFtvb)).
 
 Though I owe my rather limited (but ever growing) understanding of the machine and the world to 
