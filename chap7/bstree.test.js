@@ -47,7 +47,7 @@ let result = `
            [7] [10] [12]  [15]
 `
 
-// test search functionality
+// test search, remove, bstree-ness, hasElement functionality
 let recur_has, 
     iter_has, 
     remove, 
