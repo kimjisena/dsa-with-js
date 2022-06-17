@@ -1,4 +1,4 @@
-import { emptyQueue } from "./queue";
+import { emptyQueue } from "./queue.js";
 
 // testing queue functionality
 

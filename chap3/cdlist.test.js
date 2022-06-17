@@ -1,4 +1,4 @@
-import { emptyCDList } from "./cdlist";
+import { emptyCDList } from "./cdlist.js";
 
 
 // testing doubly linked list functionality

@@ -1,4 +1,4 @@
-import { binary } from "./binary";
+import { binary } from "./binary.js";
 
 // testing binary search
 let a = [1, 3, 4, 4, 6, 17, 79, 81, 90];

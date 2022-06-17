@@ -1,4 +1,4 @@
-import { emptyTree, makeBT, size } from "./btree";
+import { emptyTree, makeBT, size } from "./btree.js";
 
 // testing binary tree functionality
 let tree1 = emptyTree();

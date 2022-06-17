@@ -1,0 +1,7 @@
+{
+    "name": "dsa-with-js",
+    "description": "a study of common DSAs",
+    "authors": "Kim Jisena",
+    "version": "1.0.0",
+    "type": "module"
+}

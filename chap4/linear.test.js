@@ -1,4 +1,4 @@
-import { linear } from "./linear";
+import { linear } from "./linear.js";
 
 // testing linear search
 let a = [1, 4, 17, 3, 90, 79, 4, 6, 81];

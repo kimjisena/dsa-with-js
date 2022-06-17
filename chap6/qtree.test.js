@@ -1,4 +1,4 @@
-import { baseQT, makeQT } from "./qtree";
+import { baseQT, makeQT } from "./qtree.js";
 
 // testing qtree functionality
 let qtree1 = baseQT(0);

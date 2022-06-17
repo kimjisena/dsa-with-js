@@ -1,4 +1,4 @@
-import { emptyList, last, append } from "./list";
+import { emptyList, last, append } from "./list.js";
 
 
 // testing linked list functionality

@@ -1,4 +1,4 @@
-import {emptyDList} from './dlist';
+import {emptyDList} from './dlist.js';
 
 
 // testing doubly linked list functionality
