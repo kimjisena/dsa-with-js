@@ -46,3 +46,12 @@ let result = `
            \    \     /   \
            [7] [10] [12]  [15]
 `
+
+// test search functionality
+let has;
+import('./bstree.js')
+    .then(m => {
+        has = m.isIn
+    });
+
+console.clear();

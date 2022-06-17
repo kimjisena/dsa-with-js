@@ -40,6 +40,7 @@ import { emptyTree, makeBT } from "../chap6/btree.js";
  * - if `v` == bstree.root()` then `ViolatedAssumptionError`
  * 
  * note that `insert(v, bstree)` assumes `v != bstree.root()`
+ * time complexity: O(log n)
  */
 
 export function getBST () {
@@ -65,5 +66,18 @@ export function insert (v, bstree) {
             name: 'ViolatedAssumptionError',
             message: 'Can not replace root node'
         }
+    }
+}
+
+// searching
+export function isIn(v, bstree) {
+    if (bstree.isEmpty()) {
+        return false;
+    } else if (v === bstree.root()) {
+        return true;
+    } else if (v < bstree.root()) {
+        return isIn(v, bstree.left())
+    } else {
+        return isIn(v, bstree.right());
     }
 }
