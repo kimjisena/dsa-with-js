@@ -53,6 +53,47 @@ export function getBST () {
     return bstree;
 }
 
+// util functions
+function smallest(bstree) {
+    // bstree is assumed to be non-empty
+    if (bstree.left().isEmpty()) {
+        return bstree.root();
+    }
+    return smallest(bstree.left());
+}
+
+function removeSmallest(bstree) {
+    // bstree is assumed to be empty
+    if (bstree.left().isEmpty()) {
+        return bstree.right();
+    }
+    return getBST(makeBT(bstree.root(), 
+        removeSmallest(bstree.left()), bstree.right()));
+}
+
+function allSmaller(tree, v) {
+    if (tree.isEmpty()) {
+        return true;
+    }
+    return (
+        (tree.root() < v) &&
+        allSmaller(tree.left(), v) &&
+        allSmaller(tree.right(), v)
+    );
+}
+
+function allBigger(tree, v) {
+    if (tree.isEmpty()) {
+        return true;
+    }
+    return (
+        (tree.root() > v) &&
+        allBigger(tree.left(), v) &&
+        allBigger(tree.right(), v)
+    );
+}
+
+
 // insert a value
 export function insert (v, bstree) {
     if (bstree.isEmpty()) {
@@ -82,23 +123,6 @@ export function recur_isIn (v, bstree) {
     }
 }
 
-function smallest(bstree) {
-    // bstree is assumed to be non-empty
-    if (bstree.left().isEmpty()) {
-        return bstree.root();
-    }
-    return smallest(bstree.left());
-}
-
-function removeSmallest(bstree) {
-    // bstree is assumed to be empty
-    if (bstree.left().isEmpty()) {
-        return bstree.right();
-    }
-    return getBST(makeBT(bstree.root(), 
-        removeSmallest(bstree.left()), bstree.right()));
-}
-
 // searching: iterative
 export function iter_isIn (v, bstree) {
     while (!bstree.isEmpty() && v !== bstree.root()) {
@@ -120,9 +144,11 @@ export function remove (v, bstree) {
         };
     } else {
         if (v < bstree.root()) {
-            return getBST(makeBT(bstree.root(), remove(v, bstree.left()), bstree.right()));
+            return getBST(makeBT(bstree.root(), 
+                remove(v, bstree.left()), bstree.right()));
         } else if (v > bstree.root()) {
-            return getBST(makeBT(bstree.root(), bstree.left(), remove(v, bstree.right())));
+            return getBST(makeBT(bstree.root(), 
+                bstree.left(), remove(v, bstree.right())));
         } else {
             if (bstree.left().isEmpty()) {
                 return bstree.right();
@@ -130,8 +156,21 @@ export function remove (v, bstree) {
                 return bstree.left();
             } else {
                 return getBST(makeBT(smallest(bstree.right()), 
-                            bstree.left(), removeSmallest(bstree.right())));
+                        bstree.left(), removeSmallest(bstree.right())));
             }
         }
     }
+}
+
+// check whether a btree is a bstree
+export function isBTree(btree) {
+    if (btree.isEmpty()) {
+        return true;
+    }
+    return (
+        allSmaller(btree.left(), btree.root()) && 
+        isBTree(btree.left()) && 
+        allBigger(btree.right(), btree.root()) &&
+        isBTree(btree.right())
+    );
 }
