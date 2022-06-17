@@ -82,6 +82,23 @@ export function recur_isIn (v, bstree) {
     }
 }
 
+function smallest(bstree) {
+    // bstree is assumed to be non-empty
+    if (bstree.left().isEmpty()) {
+        return bstree.root();
+    }
+    return smallest(bstree.left());
+}
+
+function removeSmallest(bstree) {
+    // bstree is assumed to be empty
+    if (bstree.left().isEmpty()) {
+        return bstree.right();
+    }
+    return getBST(makeBT(bstree.root(), 
+        removeSmallest(bstree.left()), bstree.right()));
+}
+
 // searching: iterative
 export function iter_isIn (v, bstree) {
     while (!bstree.isEmpty() && v !== bstree.root()) {
@@ -92,4 +109,29 @@ export function iter_isIn (v, bstree) {
         }
     }
     return !bstree.isEmpty();
+}
+
+// deletion
+export function remove (v, bstree) {
+    if (bstree.isEmpty()) {
+        throw {
+            name: 'EmptyTreeError',
+            message: 'Can not access root value of an empty tree'
+        };
+    } else {
+        if (v < bstree.root()) {
+            return getBST(makeBT(bstree.root(), remove(v, bstree.left()), bstree.right()));
+        } else if (v > bstree.root()) {
+            return getBST(makeBT(bstree.root(), bstree.left(), remove(v, bstree.right())));
+        } else {
+            if (bstree.left().isEmpty()) {
+                return bstree.right();
+            } else if (bstree.right().isEmpty()) {
+                return bstree.left();
+            } else {
+                return getBST(makeBT(smallest(bstree.right()), 
+                            bstree.left(), removeSmallest(bstree.right())));
+            }
+        }
+    }
 }
