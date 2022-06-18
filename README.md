@@ -35,5 +35,5 @@ I have read books before, but I've never thought a book to be life changing unti
 well you guessed it, until I read Douglas (oh, and his [blog](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiHgKH84bT4AhWs_rsIHWSCAh4QFnoECA4QAQ&url=https%3A%2F%2Fwww.crockford.com%2F&usg=AOvVaw05YjezyHx7aiLm_SRDFtvb)).
 
 Though I owe my rather limited (but ever growing) understanding of the machine and the world to 
-many great men and women (or should is say `/[^]*/g`), I dare say Doug helped me find JesuScript. 
+many great men and women (or should I say `/[^]*/g`), I dare say Doug helped me find JesuScript. 
 I do not intend to be bent to the will of the machine, ever again, for I'm saved.
