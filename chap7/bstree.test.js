@@ -54,7 +54,8 @@ let recur_has,
     insert,
     isbst,
     getOrdered,
-    getBST;
+    getBST,
+    rebalance;
 
 import('./bstree.js')
     .then(m => {
@@ -65,6 +66,7 @@ import('./bstree.js')
         isbst = m.isBTree;
         getOrdered = m.insertInOrder;
         getBST = m.getBST;
+        rebalance = m.rebalance;
     });
 
 function sort (array) {

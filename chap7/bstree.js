@@ -176,6 +176,7 @@ export function isBTree(btree) {
 }
 
 // sorting using bstree
+// time complexity O(n)
 export function printInOrder (bstree) {
     if (!bstree.isEmpty()) {
         printInOrder(bstree.left());
@@ -184,10 +185,25 @@ export function printInOrder (bstree) {
     }
 }
 
+// extended sorting
+// time complexity O(n)
 export function insertInOrder (bstree, array) {
     if (!bstree.isEmpty()) {
         insertInOrder(bstree.left(), array);
         array.push(bstree.root());
         insertInOrder(bstree.right(), array);
     }
+}
+
+// rebalancing a bstree
+// time complexity: O(n)
+export function rebalance (bstree) {
+    let array = [],
+        bst = getBST(),
+        root,
+        mid;
+    insertInOrder(bstree, array); // O(n)
+    //console.log(array);
+
+    return bst;
 }
