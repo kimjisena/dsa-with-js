@@ -176,7 +176,7 @@ export function isBTree(btree) {
 }
 
 // sorting using bstree
-function printInOrder (bstree) {
+export function printInOrder (bstree) {
     if (!bstree.isEmpty()) {
         printInOrder(bstree.left());
         console.log(bstree.root());
@@ -184,12 +184,10 @@ function printInOrder (bstree) {
     }
 }
 
-export function sort (array) {
-    let bstree = getBST();
-
-    for (let i = 0; i < array.length; i++) {
-        bstree = insert(array[i], bstree);
+export function insertInOrder (bstree, array) {
+    if (!bstree.isEmpty()) {
+        insertInOrder(bstree.left(), array);
+        array.push(bstree.root());
+        insertInOrder(bstree.right(), array);
     }
-
-    printInOrder(bstree);
 }

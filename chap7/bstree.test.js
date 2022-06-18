@@ -51,16 +51,30 @@ let result = `
 let recur_has, 
     iter_has, 
     remove,
+    insert,
     isbst,
-    sort;
+    getOrdered,
+    getBST;
 
 import('./bstree.js')
     .then(m => {
         recur_has = m.recur_isIn;
         iter_has = m.iter_isIn;
         remove = m.remove;
+        insert = m.insert;
         isbst = m.isBTree;
-        sort = m.sort;
+        getOrdered = m.insertInOrder;
+        getBST = m.getBST;
     });
 
+function sort (array) {
+    let bstree = getBST();
+
+    for (let i = 0; i < array.length; i++) {
+        bstree = insert(array[i], bstree);
+    }
+    array.length = 0;
+    //printInOrder(bstree);
+    getOrdered(bstree, array);
+}
 console.clear();
