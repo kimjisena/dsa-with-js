@@ -63,7 +63,7 @@ function smallest(bstree) {
 }
 
 function removeSmallest(bstree) {
-    // bstree is assumed to be empty
+    // bstree is assumed to be non-empty
     if (bstree.left().isEmpty()) {
         return bstree.right();
     }

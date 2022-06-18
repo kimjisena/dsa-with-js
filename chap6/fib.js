@@ -49,18 +49,21 @@ function memo_recur_fib (n) {
 }
 
 function iter_fib (n) {
-    let cache = [1, 1],
+    let a = 0,
+        b = 1,
+        c,
         i = 2;
 
     if (n === 0 || n === 1) {
         return n;
     }
-
-    while (i < n) {
-        cache[i] = cache[i - 1] + cache[i - 2];
+    while (i <= n) {
+        c = a + b;
+        a = b;
+        b = c;
         i++;
     }
-    return cache[cache.length - 1];
+    return c;
 }
 
 function test_fib () {
