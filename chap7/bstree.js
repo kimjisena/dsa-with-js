@@ -174,3 +174,22 @@ export function isBTree(btree) {
         isBTree(btree.right())
     );
 }
+
+// sorting using bstree
+function printInOrder (bstree) {
+    if (!bstree.isEmpty()) {
+        printInOrder(bstree.left());
+        console.log(bstree.root());
+        printInOrder(bstree.right());
+    }
+}
+
+export function sort (array) {
+    let bstree = getBST();
+
+    for (let i = 0; i < array.length; i++) {
+        bstree = insert(array[i], bstree);
+    }
+
+    printInOrder(bstree);
+}

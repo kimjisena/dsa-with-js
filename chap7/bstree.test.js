@@ -50,8 +50,9 @@ let result = `
 // test search, remove, bstree-ness, hasElement functionality
 let recur_has, 
     iter_has, 
-    remove, 
-    isbst;
+    remove,
+    isbst,
+    sort;
 
 import('./bstree.js')
     .then(m => {
@@ -59,6 +60,7 @@ import('./bstree.js')
         iter_has = m.iter_isIn;
         remove = m.remove;
         isbst = m.isBTree;
+        sort = m.sort;
     });
 
 console.clear();
