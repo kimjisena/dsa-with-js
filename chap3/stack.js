@@ -1,7 +1,7 @@
 /**
  * stacks
  * 
- * stack is a last-in, first-out datastructure
+ * stack is a last-in, first-out data structure
  * 
  * it is conveniently used to implement function call stacks where `caller` is pushed 
  * onto the stack until `callee` is popped, handled and returned.
@@ -60,6 +60,10 @@ function getStack() {
 }
 
 // the empty stack
-export function emptyStack() {
+function emptyStack() {
     return getStack();
 }
+
+module.exports = {
+    emptyStack,
+};

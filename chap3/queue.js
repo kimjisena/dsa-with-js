@@ -1,8 +1,8 @@
 /**
  * queues
  * 
- * a queue is a first-in, first-out datastructure where elements are added to
- * the added and removed from the front
+ * a queue is a first-in, first-out data structure where elements are 
+ * added and removed to/from the front
  * 
  * it is convenient for scheduling jobs: for instance in an `event loop`
  * 
@@ -62,6 +62,10 @@ function getQueue() {
     }
 }
 
-export function emptyQueue() {
+function emptyQueue() {
     return getQueue();
 }
+
+module.exports = {
+    emptyQueue,
+};
