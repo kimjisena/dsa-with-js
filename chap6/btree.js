@@ -96,11 +96,11 @@ function getBT() {
     };
 }
 
-export function emptyTree () {
+function emptyTree () {
     return getBT();
 }
 
-export function makeBT (v, l, r) {
+function makeBT (v, l, r) {
     if (arguments.length === 1) {
         return getBT(arguments[0]);
     }
@@ -108,9 +108,15 @@ export function makeBT (v, l, r) {
 }
 
 // get size of a tree i.e number of nodes
-export function size (tree) {
+function size (tree) {
     if (tree.isEmpty()) {
         return 0;
     }
     return (1 + size(tree.left()) + size(tree.right()));
 }
+
+module.exports = {
+    emptyTree,
+    makeBT,
+    size
+};
