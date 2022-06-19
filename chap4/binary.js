@@ -16,7 +16,7 @@
  * it also depends on how data is sorted i.e the complexity of the sort algorithm
  */
 
-export function binary(a, x) {
+function binary(a, x) {
     let left = 0,
         right = a.length - 1,
         mid;
@@ -31,3 +31,7 @@ export function binary(a, x) {
 
         return a[left] === x ? left : -1;
 }
+
+module.exports = {
+    binary,
+};
