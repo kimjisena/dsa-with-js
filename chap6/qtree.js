@@ -129,10 +129,28 @@ function getQT () {
     };
 }
 
-export function baseQT (value) {
+function baseQT (value) {
     return getQT(value);
 }
 
-export function makeQT(luqt, ruqt, rlqt, llqt) {
+function makeQT(luqt, ruqt, rlqt, llqt) {
     return getQT(luqt, ruqt, rlqt, llqt);
 }
+
+function rotate180(qtree) {
+    if (qtree.isValue()) {
+        return qtree
+    }
+
+    return makeQT(rotate180(qtree.rl()),
+                    rotate180(qtree.ll()),
+                    rotate180(qtree.lu()),
+                    rotate180(qtree.ru())
+                    );
+}
+
+module.exports = {
+    baseQT,
+    makeQT,
+    rotate180
+};
