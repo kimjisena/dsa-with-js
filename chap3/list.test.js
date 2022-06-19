@@ -1,7 +1,6 @@
 const {emptyList, last, append} = require('./list.js');
 
-// testing linked list functionality
-describe('initial tests', () => {
+describe('list: initial tests', () => {
     let list;
 
     beforeAll(()=> {
@@ -9,7 +8,8 @@ describe('initial tests', () => {
     });
 
     test('empty list throws EmptyListError', () => {
-        expect(() => list.top()).toThrow('Can not access elements of an empty list');
+        expect(() => list.top())
+            .toThrow('Can not access elements of an empty list');
     });
 
     test('list.isEmpty() returns true for empty list', () => {
@@ -18,7 +18,7 @@ describe('initial tests', () => {
 
 });
 
-describe('testing core operations', () => {
+describe('list: core operations', () => {
     let list,
         rest;
 

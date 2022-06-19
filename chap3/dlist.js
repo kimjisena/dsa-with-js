@@ -1,7 +1,7 @@
 /**
  * doubly linked lists
  * 
- * a doubly linked list can be used to when working with a list of web pages
+ * a doubly linked list can be used, for instance, when working with a list of web pages
  * where each page has content, a pointer to the next page and a pointer 
  * to the previous page
  * 
@@ -189,6 +189,10 @@
     };
 }
 
-export function emptyDList () {
+function emptyDList () {
     return getDList();
+}
+
+module.exports = {
+    emptyDList,
 }
