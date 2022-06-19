@@ -14,7 +14,7 @@
  * - average case: `n/2` iterations
  */
 
-export function linear(a, x) {
+function linear(a, x) {
     
     for (let i = 0; i < a.length - 1; i++) {
         if (a[i] === x) {
@@ -23,3 +23,7 @@ export function linear(a, x) {
     }
     return -1;
 }
+
+module.exports = {
+    linear,
+};
