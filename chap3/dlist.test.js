@@ -15,13 +15,12 @@ describe('dlist: initial test', () => {
 });
 
 describe('dlist: core operations', () => {
-    let dlist;
-    dlist = emptyDList()
-            .makeListLeft(5)
-            .makeListLeft(2)
-            .makeListLeft(4)
-            .makeListLeft(1)
-            .makeListLeft(3);
+    let dlist = emptyDList()
+                .makeListLeft(5)
+                .makeListLeft(2)
+                .makeListLeft(4)
+                .makeListLeft(1)
+                .makeListLeft(3);
 
     test('dlist.isEmpty() is false for non-empty dlist', () => {
         expect(dlist.isEmpty()).toBe(false);

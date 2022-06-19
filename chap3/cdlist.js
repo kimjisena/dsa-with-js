@@ -106,7 +106,7 @@
         if (isEmpty()) {
             throw {
                 name: 'DListEmptyError',
-                message: 'Can not access elements of an empty dlist'
+                message: 'Can not access elements of an empty cdlist'
             };
         } 
 
@@ -120,7 +120,7 @@
         if (isEmpty()) {
             throw {
                 name: 'DListEmptyError',
-                message: 'Can not access elements of an empty dlist'
+                message: 'Can not access elements of an empty cdlist'
             };
         }
         next = list[left].next;
@@ -139,8 +139,8 @@
 
         if (isEmpty()) {
             throw {
-                name: 'DListEmptyError',
-                message: 'Can not access elements of an empty dlist'
+                name: 'CDListEmptyError',
+                message: 'Can not access elements of an empty cdlist'
             };
         }
 
@@ -153,8 +153,8 @@
 
         if (isEmpty()) {
             throw {
-                name: 'DListEmptyError',
-                message: 'Can not access elements of an empty dlist'
+                name: 'CDListEmptyError',
+                message: 'Can not access elements of an empty cdlist'
             };
         }
         prev = list[right].prev;
@@ -180,6 +180,10 @@
     };
 }
 
-export function emptyCDList () {
+function emptyCDList () {
     return getCDList();
 }
+
+module.exports = {
+    emptyCDList,
+};
