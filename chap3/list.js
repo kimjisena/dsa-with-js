@@ -128,12 +128,12 @@
 }
 
 // the empty list
-export function emptyList () {
+function emptyList () {
     return getList();
 }
 
 // return the last element in a list
-export function last (list) {
+function last (list) {
 
     if (list.isEmpty()) {
 
@@ -153,10 +153,16 @@ export function last (list) {
 }
 
 // append list_1 to list_2
-export function append (list_1, list_2) {
+function append (list_1, list_2) {
     if (list_1.isEmpty()) {
         return list_2;
     } else {
         return append(list_1.rest(), list_2).makeList(list_1.top());
     }
 }
+
+module.exports = {
+    emptyList,
+    last,
+    append
+};

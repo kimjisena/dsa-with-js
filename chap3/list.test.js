@@ -1,39 +1,65 @@
-import { emptyList, last, append } from "./list.js";
-
+const {emptyList, last, append} = require('./list.js');
 
 // testing linked list functionality
+describe('initial tests', () => {
+    let list;
 
+    beforeAll(()=> {
+        list = emptyList();
+    });
 
-let list = emptyList();
+    test('empty list throws EmptyListError', () => {
+        expect(() => list.top()).toThrow('Can not access elements of an empty list');
+    });
 
-try {
-    list.rest();
-} catch(e) {
-    console.log(e.name); // ListEmptyError
-}
+    test('list.isEmpty() returns true for empty list', () => {
+        expect(list.isEmpty()).toBe(true);
+    });    
 
-console.log(list.isEmpty()); // true
+});
 
-list = list.makeList(5)
+describe('testing core operations', () => {
+    let list,
+        rest;
+
+    beforeAll(() => {
+        list = emptyList().makeList(5)
             .makeList(2)
             .makeList(4)
             .makeList(1)
             .makeList(3);
+        rest = list.rest();
+    });
 
-console.log(list.top()); // 3
+    test('list.top() element is 3', () => {
+        expect(list.top()).toBe(3);
+    });
 
-let rest = list.rest();
-console.log(rest.isEmpty()); // false
-console.log(rest.top()); // 1
+    test('rest is not empty', () => {
+        expect(rest.isEmpty()).toBe(false);
+     });
 
-let replaced = list.replaceTop(9);
-console.log(replaced.top()); // 9
+    test('rest.top() element is 1', () => {
+        expect(rest.top()).toBe(1);
+    });
 
-let replaced1 = replaced.replaceRest(6, 2, 3, 4);
-console.log(replaced1.top()); // 9
-console.log(replaced1.rest().top()); // 6
+    test('replace top with 9', () => {
+        list.replaceTop(9);
+        expect(list.top()).toBe(9);
+    });
 
-console.log(last(replaced1)); // 4
+    test('replace rest: top is 9', () => {
+        let replaced = list.replaceRest(6, 2, 3, 4);
+        expect(replaced.top()).toBe(9);
+    });
 
-let appended = append(list, rest);
-console.log(appended.top()); // 5
+    test('replace rest: last is 4', () => {
+        let replaced = list.replaceRest(6, 2, 3, 4);
+        expect(last(replaced)).toBe(4);
+    });
+
+    test('append rest to list: top is 5', () => {
+        let appended = append(list, rest);
+        expect(appended.top()).toBe(5);
+    });
+});
