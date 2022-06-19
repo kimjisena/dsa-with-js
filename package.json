@@ -1,7 +1,22 @@
 {
-    "name": "dsa-with-js",
-    "description": "a study of common DSAs",
-    "authors": "Kim Jisena",
-    "version": "1.0.0",
-    "type": "module"
+  "name": "dsa-with-js",
+  "version": "1.0.0",
+  "description": "a study of common DSAs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimjisena/dsa-with-js.git"
+  },
+  "author": "Kim Jisena",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kimjisena/dsa-with-js/issues"
+  },
+  "homepage": "https://github.com/kimjisena/dsa-with-js#readme",
+  "devDependencies": {
+    "jest": "^28.1.1"
+  }
 }
