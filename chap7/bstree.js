@@ -1,4 +1,4 @@
-import { emptyTree, makeBT } from "../chap6/btree.js";
+const {emptyTree, makeBT} = require('../chap6/btree.js');
 
 /**
  * binary search trees
@@ -43,7 +43,7 @@ import { emptyTree, makeBT } from "../chap6/btree.js";
  * time complexity: O(log n)
  */
 
-export function getBST () {
+function getBST () {
     let bstree = emptyTree();
 
     if (arguments.length === 1) {
@@ -95,7 +95,7 @@ function allBigger(tree, v) {
 
 
 // insert a value
-export function insert (v, bstree) {
+function insert (v, bstree) {
     if (bstree.isEmpty()) {
         return getBST(makeBT(v));
     } else if (v < bstree.root()) {
@@ -111,20 +111,20 @@ export function insert (v, bstree) {
 }
 
 // searching: recursive
-export function recur_isIn (v, bstree) {
+function recur_isIn (v, bstree) {
     if (bstree.isEmpty()) {
         return false;
     } else if (v === bstree.root()) {
         return true;
     } else if (v < bstree.root()) {
-        return isIn(v, bstree.left())
+        return recur_isIn(v, bstree.left())
     } else {
-        return isIn(v, bstree.right());
+        return recur_isIn(v, bstree.right());
     }
 }
 
 // searching: iterative
-export function iter_isIn (v, bstree) {
+function iter_isIn (v, bstree) {
     while (!bstree.isEmpty() && v !== bstree.root()) {
         if (v < bstree.root()) {
             bstree = bstree.left();
@@ -136,7 +136,7 @@ export function iter_isIn (v, bstree) {
 }
 
 // deletion
-export function remove (v, bstree) {
+function remove (v, bstree) {
     if (bstree.isEmpty()) {
         throw {
             name: 'EmptyTreeError',
@@ -163,21 +163,21 @@ export function remove (v, bstree) {
 }
 
 // check whether a btree is a bstree
-export function isBTree(btree) {
+function isBSTree(btree) {
     if (btree.isEmpty()) {
         return true;
     }
     return (
         allSmaller(btree.left(), btree.root()) && 
-        isBTree(btree.left()) && 
+        isBSTree(btree.left()) && 
         allBigger(btree.right(), btree.root()) &&
-        isBTree(btree.right())
+        isBSTree(btree.right())
     );
 }
 
 // sorting using bstree
 // time complexity O(n)
-export function printInOrder (bstree) {
+function printInOrder (bstree) {
     if (!bstree.isEmpty()) {
         printInOrder(bstree.left());
         console.log(bstree.root());
@@ -187,7 +187,7 @@ export function printInOrder (bstree) {
 
 // extended sorting
 // time complexity O(n)
-export function insertInOrder (bstree, array) {
+function insertInOrder (bstree, array) {
     if (!bstree.isEmpty()) {
         insertInOrder(bstree.left(), array);
         array.push(bstree.root());
@@ -196,14 +196,14 @@ export function insertInOrder (bstree, array) {
 }
 
 // rebalancing a bstree
-// time complexity: O(n)
-export function rebalance (bstree) {
-    let array = [],
-        bst = getBST(),
-        root,
-        mid;
-    insertInOrder(bstree, array); // O(n)
-    //console.log(array);
 
-    return bst;
-}
+
+module.exports = {
+    getBST,
+    insert,
+    recur_isIn,
+    iter_isIn,
+    remove,
+    isBSTree,
+    insertInOrder
+};
