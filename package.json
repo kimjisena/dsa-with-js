@@ -1,7 +1,7 @@
 {
   "name": "dsa-with-js",
   "version": "1.0.0",
-  "description": "a study of common DSAs",
+  "description": "a study of common DSAs using JavaScript",
   "main": "index.js",
   "scripts": {
     "test": "jest"
