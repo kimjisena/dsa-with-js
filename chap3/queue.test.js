@@ -3,7 +3,7 @@ const {emptyQueue} = require('./queue.js');
 describe('queue: initial tests', () => {
     let queue = emptyQueue();
     
-    test('queue.isEmpty() is true for empty queue', () => {
+    test('should return true', () => {
         expect(queue.isEmpty()).toBe(true);
     });
 });
@@ -15,11 +15,11 @@ describe('queue: core operations', () => {
                 .push(4)
                 .push(2);
 
-    test('queue.top() is 3', () => {
+    test('should return 3', () => {
         expect(queue.top()).toBe(3);
     });
 
-    test('queue.isEmpty() is true', () => {
+    test('should return true', () => {
         queue = queue
                 .pop()
                 .pop()
