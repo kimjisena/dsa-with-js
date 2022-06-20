@@ -7,12 +7,12 @@ describe('list: initial tests', () => {
         list = emptyList();
     });
 
-    test('empty list throws EmptyListError', () => {
+    test('should throw EmptyListError', () => {
         expect(() => list.top())
             .toThrow('Can not access elements of an empty list');
     });
 
-    test('list.isEmpty() returns true for empty list', () => {
+    test('should return true', () => {
         expect(list.isEmpty()).toBe(true);
     });    
 
@@ -31,35 +31,32 @@ describe('list: core operations', () => {
         rest = list.rest();
     });
 
-    test('list.top() element is 3', () => {
+    test('should return 3', () => {
         expect(list.top()).toBe(3);
     });
 
-    test('rest is not empty', () => {
+    test('should return false', () => {
         expect(rest.isEmpty()).toBe(false);
      });
 
-    test('rest.top() element is 1', () => {
+    test('should return 1', () => {
         expect(rest.top()).toBe(1);
     });
 
-    test('replace top with 9', () => {
+    test('should return 9', () => {
         list.replaceTop(9);
         expect(list.top()).toBe(9);
     });
 
-    test('replace rest: top is 9', () => {
-        let replaced = list.replaceRest(6, 2, 3, 4);
-        expect(replaced.top()).toBe(9);
+    test('should return 9', () => {
+        expect(list.replaceRest(6, 2, 3, 4).top()).toBe(9);
     });
 
-    test('replace rest: last is 4', () => {
-        let replaced = list.replaceRest(6, 2, 3, 4);
-        expect(last(replaced)).toBe(4);
+    test('should return 4', () => {
+        expect(last(list.replaceRest(6, 2, 3, 4))).toBe(4);
     });
 
-    test('append rest to list: top is 5', () => {
-        let appended = append(list, rest);
-        expect(appended.top()).toBe(5);
+    test('should return 5', () => {
+        expect(append(list, rest).top()).toBe(5);
     });
 });
