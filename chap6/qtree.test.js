@@ -35,6 +35,11 @@ describe('qtree: core operations', () => {
         expect(qtree.isValue()).toBe(false);
     });
 
+    test('should throw NotValueError', () => {
+        expect(() => qtree.value())
+            .toThrow('Can not access value of a qtree with children');
+    });
+
     test('should return true', () => {
         expect(qtree.lu().isValue()).toBe(true);
         expect(qtree.ru().isValue()).toBe(true);
@@ -47,6 +52,11 @@ describe('qtree: core operations', () => {
 
         test('should return false', () => {
             expect(qtree.isValue()).toBe(false);
+        });
+
+        test('should throw NotValueError', () => {
+            expect(() => qtree.value())
+                .toThrow('Can not access value of a qtree with children');
         });
 
         test('should return 110', () => {
