@@ -1,6 +1,6 @@
 # Study of Data Structures and Algorithms
 
-I'm using this repo to study, analyze, familiarize with, and scrutinize DSA 
+I'm using this repo to study, analyze, familiarize with, and scrutinize common DSAs 
 by using JavaScript.
 
 I'll be using [Lecture Notes for Data Structures and Algorithms](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjCyf2v5bL4AhXRuKQKHasMAd8QFnoECBkQAQ&url=https%3A%2F%2Fwww.cs.bham.ac.uk%2F~jxb%2FDSA%2Fdsa.pdf&usg=AOvVaw1_rAAPVg4Mt-TNx9qhoSSS)
