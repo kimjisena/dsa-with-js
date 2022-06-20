@@ -1,14 +1,14 @@
 const {emptyDList} = require('./dlist.js');
 
-describe('dlist: initial test', () => {
+describe('dlist: initial tests', () => {
     let dlist;
     dlist = emptyDList();
 
-    test('dlist.isEmpty() returns true for empty dlist', () => {
+    test('should return true', () => {
         expect(dlist.isEmpty()).toBe(true);
     });
 
-    test('empty dlist throws EmptyDListError', () => {
+    test('should throw EmptyDListError', () => {
         expect(() => dlist.firstLeft())
             .toThrow('Can not access elements of an empty dlist');
     });
@@ -22,30 +22,30 @@ describe('dlist: core operations', () => {
                 .makeListLeft(1)
                 .makeListLeft(3);
 
-    test('dlist.isEmpty() is false for non-empty dlist', () => {
+    test('should return false', () => {
         expect(dlist.isEmpty()).toBe(false);
     });
 
-    test('dlist.firstLeft() is 3', () => {
+    test('should return 3', () => {
         expect(dlist.firstLeft()).toBe(3);
     });
 
-    test('dlist.firstRight() is 5', () => {
+    test('should return 5', () => {
         expect(dlist.firstRight()).toBe(5);
     });
 
     describe('dlist.restRight()', () => {
         let right = dlist.restRight();
 
-        test('right.isEmpty() is false', () => {
+        test('should return false', () => {
             expect(right.isEmpty()).toBe(false);
         });
 
-        test('right.firtLeft() is 3', () => {
+        test('should return 3', () => {
             expect(right.firstLeft()).toBe(3);
         });
 
-        test('right.firstRight() is 2', () => {
+        test('should return 2', () => {
             expect(right.firstRight()).toBe(2);
         });
     });
@@ -54,15 +54,15 @@ describe('dlist: core operations', () => {
     describe('dlist.restLeft()', () => {
         let left = dlist.restLeft();
 
-        test('left.isEmpty() is false', () => {
+        test('should return false', () => {
             expect(left.isEmpty()).toBe(false);
         });
 
-        test('left.firstLeft() is 1', () => {
+        test('should return 1', () => {
             expect(left.firstLeft()).toBe(1);
         });
 
-        test('left.firstRight() is 5', () => {
+        test('should return 5', () => {
             expect(left.firstRight()).toBe(5);
         });
     });
@@ -75,15 +75,15 @@ describe('dlist: core operations', () => {
                     .makeListRight(2)
                     .makeListRight(5);
 
-        test('dlist.isEmpty() is false', () => {
+        test('should return false', () => {
             expect(dlist.isEmpty()).toBe(false);
         });
 
-        test('dlist.firstLeft() is 3', () => {
+        test('should return 3', () => {
             expect(dlist.firstLeft()).toBe(3);
         });
 
-        test('dlist.firstRight() is 5', () => {
+        test('should return 5', () => {
             expect(dlist.firstRight()).toBe(5);
         });
     });
