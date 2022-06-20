@@ -1,6 +1,8 @@
 const { getBST, insert, recur_isIn, 
         iter_isIn, remove, isBSTree, 
-        insertInOrder} = require('./bstree.js');
+        insertInOrder, balance} = require('./bstree.js');
+
+const {size} = require('../chap6/btree.js');
 
 describe('bstree: initial tests', () => {
     let bstree = getBST();
@@ -81,5 +83,53 @@ describe('bstree: core operations', () => {
         expect(sorted[8]).toBe(12);
         expect(sorted[9]).toBe(14);
         expect(sorted[10]).toBe(15);
+    });
+});
+
+describe('rebalancing a bstree', () => {
+    let nodes = [8, 3, 1, 6, 7, 11, 14, 9, 10, 12, 15],
+        bstree = getBST(),
+        balanced;
+
+    for (let n of nodes) {
+        bstree = insert(n, bstree);
+    }
+    balanced = balance(bstree);
+
+    test('should throw EmptyTreeError', () => {
+        expect(() => balance(getBST()))
+            .toThrow('Can not access root value of an empty tree');
+    });
+
+    test('should return 11', () => {
+        expect(size(bstree)).toBe(11);
+    });
+
+    test('should return 8', () => {
+        expect(bstree.root()).toBe(8);
+    });
+
+    test('should return 11', () => {
+        expect(size(balanced)).toBe(11);
+    });
+
+    test('should return 9', () => {
+        expect(balanced.root()).toBe(9);
+    });
+
+    test('should return 6', () => {
+        expect(balanced.left().root()).toBe(6);
+    });
+
+    test('should return 12', () => {
+        expect(balanced.right().root()).toBe(12);
+    });
+
+    test('should return 3', () => {
+        expect(balanced.left().left().root()).toBe(3);
+    });
+
+    test('should return true', () => {
+        expect(balanced.left().left().right().isEmpty()).toBe(true);
     });
 });

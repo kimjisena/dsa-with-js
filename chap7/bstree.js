@@ -196,7 +196,41 @@ function insertInOrder (bstree, array) {
 }
 
 // rebalancing a bstree
+// time complexity: O(log n)
+function balance(bstree) {
+    let array = [];
+    
+    if (bstree.isEmpty()) {
+        throw {
+            name: 'EmptyTreeError',
+            message: 'Can not access root value of an empty tree'
+        };
+    }
 
+    insertInOrder(bstree, array);
+
+    function helper(arr) {
+        let mid,
+            left,
+            right;
+
+        if (arr.length === 1) {
+            return getBST(makeBT(arr[0]));
+        } else {
+            mid = Math.floor(arr.length / 2);
+            left = arr.slice(0, mid);
+            right = arr.slice(mid + 1, arr.length);
+
+            if (right.length === 0) {
+                return getBST(makeBT(arr[mid], helper(left), emptyTree()));
+            } else {
+                return getBST(makeBT(arr[mid], helper(left), helper(right)));
+            }
+        }
+    }
+
+    return helper(array);
+}
 
 module.exports = {
     getBST,
@@ -205,5 +239,6 @@ module.exports = {
     iter_isIn,
     remove,
     isBSTree,
-    insertInOrder
+    insertInOrder,
+    balance
 };
