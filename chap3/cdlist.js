@@ -105,7 +105,7 @@
     function firstLeft () {
         if (isEmpty()) {
             throw {
-                name: 'DListEmptyError',
+                name: 'EmptyCDListError',
                 message: 'Can not access elements of an empty cdlist'
             };
         } 
@@ -119,7 +119,7 @@
 
         if (isEmpty()) {
             throw {
-                name: 'DListEmptyError',
+                name: 'EmptyCDListError',
                 message: 'Can not access elements of an empty cdlist'
             };
         }
@@ -139,7 +139,7 @@
 
         if (isEmpty()) {
             throw {
-                name: 'CDListEmptyError',
+                name: 'EmptyCDListError',
                 message: 'Can not access elements of an empty cdlist'
             };
         }
@@ -153,7 +153,7 @@
 
         if (isEmpty()) {
             throw {
-                name: 'CDListEmptyError',
+                name: 'EmptyCDListError',
                 message: 'Can not access elements of an empty cdlist'
             };
         }

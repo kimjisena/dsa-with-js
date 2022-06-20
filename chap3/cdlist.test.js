@@ -7,12 +7,12 @@ describe('cdlist: initial tests', () => {
         expect(cdlist.isEmpty()).toBe(true);
     });
 
-    test('should throw CDListEmptyError', () => {
+    test('should throw EmptyCDListError', () => {
         expect(() => cdlist.firstLeft())
             .toThrow('Can not access elements of an empty cdlist');
     });
 
-    test('should throw CDListEmptyError', () => {
+    test('should throw EmptyCDListError', () => {
         expect(() => cdlist.firstRight())
             .toThrow('Can not access elements of an empty cdlist');
     });

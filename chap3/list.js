@@ -65,7 +65,7 @@
     function top () {
         if (isEmpty()) {
             throw {
-                name: 'ListEmptyError',
+                name: 'EmptyListError',
                 message: 'Can not access elements of an empty list'
             };
         }
@@ -77,7 +77,7 @@
 
         if (isEmpty()) {
             throw {
-                name: 'ListEmptyError',
+                name: 'EmptyListError',
                 message: 'Can not access elements of an empty list'
             };
         }
@@ -138,7 +138,7 @@ function last (list) {
     if (list.isEmpty()) {
 
         throw {
-            name: 'ListEmptyError',
+            name: 'EmptyListError',
             message: 'Can not access elements of an empty list'
         };
 

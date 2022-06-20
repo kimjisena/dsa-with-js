@@ -33,7 +33,7 @@ function getStack() {
     function top () {
         if(isEmpty()) {
             throw {
-                name: 'StackEmptyError',
+                name: 'EmptyStackError',
                 message: 'Can not access elements of an empty stack'
             };
         }
@@ -43,7 +43,7 @@ function getStack() {
     function pop () {
         if(isEmpty()) {
             throw {
-                name: 'StackEmptyError',
+                name: 'EmptyStackError',
                 message: 'Can not access elements of an empty stack'
             };
         }

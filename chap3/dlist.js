@@ -114,7 +114,7 @@
     function firstLeft () {
         if (isEmpty()) {
             throw {
-                name: 'DListEmptyError',
+                name: 'EmptyDListError',
                 message: 'Can not access elements of an empty dlist'
             };
         } 
@@ -128,7 +128,7 @@
 
         if (isEmpty()) {
             throw {
-                name: 'DListEmptyError',
+                name: 'EmptyDListError',
                 message: 'Can not access elements of an empty dlist'
             };
         }
@@ -148,7 +148,7 @@
 
         if (isEmpty()) {
             throw {
-                name: 'DListEmptyError',
+                name: 'EmptyDListError',
                 message: 'Can not access elements of an empty dlist'
             };
         }
@@ -162,7 +162,7 @@
 
         if (isEmpty()) {
             throw {
-                name: 'DListEmptyError',
+                name: 'EmptyDListError',
                 message: 'Can not access elements of an empty dlist'
             };
         }

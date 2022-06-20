@@ -6,6 +6,11 @@ describe('queue: initial tests', () => {
     test('should return true', () => {
         expect(queue.isEmpty()).toBe(true);
     });
+
+    test('should throw EmptyQueueError', () => {
+        expect(() => queue.top())
+            .toThrow('Can not access elements of an empty queue');
+    });
 });
 
 describe('queue: core operations', () => {

@@ -3,8 +3,13 @@ const {emptyStack} = require('./stack.js');
 describe('stack: initial tests', () => { 
     let stack = emptyStack();
 
-    test('stack.isEmpty() is true for empty stack', () => { 
+    test('should return true', () => { 
         expect(stack.isEmpty()).toBe(true);
+    });
+
+    test('should throw StackEmptyError', () => {
+        expect(() => stack.top())
+            .toThrow('Can not access elements of an empty stack')
     });
  });
 
@@ -16,12 +21,11 @@ describe('stack: initial tests', () => {
                 .push(2)
                 .push(5);
 
-    test('stack.isEmpty() is false for non-empty stack', () => { 
+    test('should return false', () => { 
         expect(stack.isEmpty()).toBe(false);
     });
 
-    test('stack.top() is 2', () => {
-        stack.pop();
-        expect(stack.top()).toBe(2);
+    test('should return 2', () => {
+        expect(stack.pop().top()).toBe(2);
     });
   });
