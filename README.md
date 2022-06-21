@@ -31,7 +31,7 @@ of the web.
 ### 8. [binary-tree](./binary-tree/)
 ### 9. [quad-tree](./quad-tree/)
 ### 10. [binary-search-tree](./binary-search-tree/)
-### 11. [avl-tree](./avl-tree/)
+### 11. [avl-tree](./avl-tree/avltree.md)
 
 ## Chatter
 JavaScript is such an expressive language if one truly knows what they are doing. I've been 
