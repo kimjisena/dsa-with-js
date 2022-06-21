@@ -138,5 +138,59 @@ describe('avl-tree: core operations', () => {
         });
     });
 
-    
+    describe('avl-tree: double left rotation', () => {
+        let avltree = getAVL(5,
+                            getAVL(3),
+                            getAVL(7,
+                                getAVL(6, getAVL(4), getAVL()),
+                                getAVL(9))
+                            );
+
+        test('should return 2', () => {
+            expect(avltree.height()).toBe(2);
+        });
+                    
+        test('should return 0', () => {
+            expect(avltree.getBalance()).toBe(0);
+        });
+
+        test('should return 6', () => {
+            expect(avltree.root()).toBe(6);
+        });
+
+        test('should return 7', () => {
+            expect(avltree.right().root()).toBe(7);
+        });
+
+        test('should return 5', () => {
+            expect(avltree.left().root()).toBe(5);
+        });
+    });
+
+    describe('avl-tree: double right rotation', () => {
+        let avltree = getAVL(7,
+                            getAVL(4, getAVL(2), getAVL(5, getAVL(3), getAVL())),
+                            getAVL(9)
+                            );
+
+        test('should return 2', () => {
+            expect(avltree.height()).toBe(2);
+        });
+                    
+        test('should return 0', () => {
+            expect(avltree.getBalance()).toBe(0);
+        });
+
+        test('should return 5', () => {
+            expect(avltree.root()).toBe(5);
+        });
+
+        test('should return 7', () => {
+            expect(avltree.right().root()).toBe(7);
+        });
+
+        test('should return 4', () => {
+            expect(avltree.left().root()).toBe(4);
+        });
+    });
 });

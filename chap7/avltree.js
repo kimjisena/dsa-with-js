@@ -34,16 +34,16 @@
         bal = getBalance();
     }
 
-    if (bal === 2) {
-        if (right().getBalance() === -1) {
+    if (bal > 1) {
+        if (right().getBalance() < 0) {
             return rLRotate();
-        } else if (right().getBalance() === 1) {
+        } else if (right().getBalance() > 0) {
             return leftRotate();
         }
-    } else if (bal === -2) {
-        if (left().getBalance() === 1) {
+    } else if (bal < -1) {
+        if (left().getBalance() > 0) {
             return lRRotate();
-        } else if (left().getBalance() === -1) {
+        } else if (left().getBalance() < 0) {
             return rightRotate();
         }
     }
