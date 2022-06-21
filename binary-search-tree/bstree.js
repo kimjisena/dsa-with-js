@@ -41,7 +41,7 @@
  * time complexity: O(log n)
  */
 
-const {emptyTree, makeBT} = require('../chap6/btree.js');
+const {emptyTree, makeBT} = require('../binary-tree/btree.js');
 
 function getBST () {
     let bstree = emptyTree();

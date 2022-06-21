@@ -2,7 +2,7 @@ const { getBST, insert, recur_isIn,
         iter_isIn, remove, isBSTree, 
         insertInOrder, balance} = require('./bstree.js');
 
-const {size} = require('../chap6/btree.js');
+const {size} = require('../binary-tree/btree.js');
 
 describe('bstree: initial tests', () => {
     let bstree = getBST();
