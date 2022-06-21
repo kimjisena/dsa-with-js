@@ -19,6 +19,20 @@ of the web.
 2. Understand common DSAs and their nuances
 3. Implement common DSAs using JavaScript
 
+## Contents
+### 0. [linked-list](./linked-list/)
+### 1. [doubly-linked-list](./doubly-linked-list/)
+### 2. [circular-doubly-linked-list](./circular-doubly-linked-list/)
+### 3. [stack](./stack/)
+### 4. [queue](./queue/)
+### 5. [linear-search](./linear-search/)
+### 6. [binary-search](./binary-search/)
+### 7. [recursion](./recursion/)
+### 8. [binary-tree](./binary-tree/)
+### 9. [quad-tree](./quad-tree/)
+### 10. [binary-search-tree](./binary-search-tree/)
+### 11. [avl-tree](./avl-tree/)
+
 ## Chatter
 JavaScript is such an expressive language if one truly knows what they are doing. I've been 
 using JavaScript (wrongly) for some time, but not until I read Marijn Haverbeke's [Eloquent JavaScript](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj6tNLw4LT4AhURiv0HHYqcBzMQFnoECC4QAQ&url=https%3A%2F%2Fopen.umn.edu%2Fopentextbooks%2Ftextbooks%2F453&usg=AOvVaw1Za73ZFX8KdBtaSnZE8bRN) 
