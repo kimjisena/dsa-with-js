@@ -20,18 +20,18 @@ of the web.
 3. Implement common DSAs using JavaScript
 
 ## Contents
-### 0. [linked-list](./linked-list/)
-### 1. [doubly-linked-list](./doubly-linked-list/)
-### 2. [circular-doubly-linked-list](./circular-doubly-linked-list/)
-### 3. [stack](./stack/)
-### 4. [queue](./queue/)
-### 5. [linear-search](./linear-search/)
-### 6. [binary-search](./binary-search/)
-### 7. [recursion](./recursion/)
-### 8. [binary-tree](./binary-tree/)
-### 9. [quad-tree](./quad-tree/)
-### 10. [binary-search-tree](./binary-search-tree/)
-### 11. [avl-tree](./avl-tree/)
+#### 0. [linked-list](./linked-list/)
+#### 1. [doubly-linked-list](./doubly-linked-list/)
+#### 2. [circular-doubly-linked-list](./circular-doubly-linked-list/)
+#### 3. [stack](./stack/)
+#### 4. [queue](./queue/)
+#### 5. [linear-search](./linear-search/)
+#### 6. [binary-search](./binary-search/)
+#### 7. [recursion](./recursion/)
+#### 8. [binary-tree](./binary-tree/)
+#### 9. [quad-tree](./quad-tree/)
+#### 10. [binary-search-tree](./binary-search-tree/)
+#### 11. [avl-tree](./avl-tree/)
 
 ## Chatter
 JavaScript is such an expressive language if one truly knows what they are doing. I've been 
