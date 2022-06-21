@@ -1,5 +1,3 @@
-const {emptyTree, makeBT} = require('../chap6/btree.js');
-
 /**
  * binary search trees
  * 
@@ -42,6 +40,8 @@ const {emptyTree, makeBT} = require('../chap6/btree.js');
  * note that `insert(v, bstree)` assumes `v != bstree.root()`
  * time complexity: O(log n)
  */
+
+const {emptyTree, makeBT} = require('../chap6/btree.js');
 
 function getBST () {
     let bstree = emptyTree();
