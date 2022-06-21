@@ -80,18 +80,28 @@ describe('avl-tree: core operations', () => {
        });
     });
 
-    describe('avl-tree: single rotation', () => {
+    describe('avl-tree: single left rotation', () => {
         let avltree = getAVL(5,
                             getAVL(3),
-                            getAVL(7, getAVL(6), getAVL(9))
+                            getAVL(7,
+                                getAVL(6),
+                                getAVL(9, getAVL(), getAVL(10)))
                             );
 
-        test('should return 7', () => {
-            expect(avltree.leftRotate().root()).toBe(7);
+        test('should return 2', () => {
+            expect(avltree.height()).toBe(2);
+        });
+                    
+        test('should return 0', () => {
+            expect(avltree.getBalance()).toBe(0);
         });
 
-        test('should return 5', () => {
-            expect(avltree.leftRotate().rightRotate().root()).toBe(5);
+        test('should return 7', () => {
+            expect(avltree.root()).toBe(7);
+        });
+
+        test('should return 9', () => {
+            expect(avltree.right().root()).toBe(9);
         });
     });
 });

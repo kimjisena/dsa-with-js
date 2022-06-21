@@ -36,4 +36,4 @@ well you guessed it, until I read Douglas (oh, and his [blog](https://www.google
 
 Though I owe my rather limited (but ever growing) understanding of the machine and the world to 
 many great men and women (or should I say `/[^]*/g`), I dare say Doug helped me find JesuScript. 
-I do not intend to be bent to the will of the machine, ever again, for I'm saved.
+I do not intend to be bent to the will of the machine ever again, for I'm saved.

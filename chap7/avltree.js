@@ -34,6 +34,20 @@
         bal = getBalance();
     }
 
+    if (bal === 2) {
+        if (right().getBalance() === -1) {
+            return rLRotate();
+        } else if (right().getBalance() === 1) {
+            return leftRotate();
+        }
+    } else if (bal === -2) {
+        if (left().getBalance() === 1) {
+            return lRRotate();
+        } else if (left().getBalance() === -1) {
+            return rightRotate();
+        }
+    }
+
     function isEmpty() {
         return label === null;
     }
@@ -137,6 +151,22 @@
         return newNode;
     }
 
+    function rebalance () {
+        if (bal === 2) {
+            if (right().getBalance() === -1) {
+                return rLRotate();
+            } else if (right().getBalance() === 1) {
+                return leftRotate();
+            }
+        } else if (bal === -2) {
+            if (left().getBalance() === 1) {
+                return lRRotate();
+            } else if (left().getBalance() === -1) {
+                return rightRotate();
+            }
+        }
+    }
+
     return {
         root,
         isEmpty,
@@ -153,6 +183,23 @@
     }
 }
 
+// insert a value
+function insert (v, node) {
+    if (node.isEmpty()) {
+        return getAVL(v);
+    } else if (v < node.root()) {
+        return getAVL(node.root(), insert(v, node.left()), node.right());
+    } else if (v > node.root()) {
+        return getAVL(node.root(), node.left(), insert(v, node.right()));
+    } else {
+        throw {
+            name: 'ViolatedAssumptionError',
+            message: 'Can not replace root node'
+        }
+    }
+}
+
 module.exports = {
     getAVL,
+    insert,
 };
