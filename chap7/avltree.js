@@ -7,15 +7,12 @@
  * this means every insertion/deletion operation disturbs the balance to [-2, 2] range 
  * and thus it needs to be restored by readjusting (rotating) the node's subtrees
  * 
- * a node in an AVL tree has the same structure as a node in a regular binary tree 
+ * a node in an AVL tree has the same structure as a node in a regular binary search tree 
  * with the addition of a `balance` field which can either be -1, 0, 1
  * 
  * insertion and deletion operations can happen while keeping the trees height at the 
  * minimum `O(log n)` eliminating the need to rebalance the whole tree
  */
-
- const {emptyTree, makeBT} = require('../chap6/btree.js');
-
  function getAVL () {
     let label = null,
         children,
@@ -101,42 +98,42 @@
     }
 
     function leftRotate () {
-        let right,
+        let r,
             child,
             newNode;
 
-        right = right();
-        child = getAVL(root(), left(), right.left());
-        newNode = getAVL(right.root(), child, right.right());
+        r = right();
+        child = getAVL(root(), left(), r.left());
+        newNode = getAVL(r.root(), child, r.right());
         return newNode;
     }
 
     function rightRotate () {
-        let left,
+        let l,
             child,
             newNode;
 
-        left = left();
-        child = getAVL(root(), left.right(), right());
-        newNode = getAVL(left.root(), left.left(), child);
+        l = left();
+        child = getAVL(root(), l.right(), right());
+        newNode = getAVL(l.root(), l.left(), child);
         return newNode;
     }
 
     function rLRotate () {
-        let right,
+        let r,
             newNode;
 
-        right = right().rightRotate();
-        newNode = getAVL(root(), left(), right).leftRotate();
+        r = right().rightRotate();
+        newNode = getAVL(root(), left(), r).leftRotate();
         return newNode;
     }
 
     function lRRotate () {
-        let left,
+        let l,
             newNode;
 
-        left = left().leftRotate();
-        newNode = getAVL(root(), left, right()).rightRotate();
+        l = left().leftRotate();
+        newNode = getAVL(root(), l, right()).rightRotate();
         return newNode;
     }
 

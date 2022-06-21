@@ -78,6 +78,20 @@ describe('avl-tree: core operations', () => {
         test('should return 1', () => {
             expect(avltree.rightHeight()).toBe(1);
        });
+    });
 
+    describe('avl-tree: single rotation', () => {
+        let avltree = getAVL(5,
+                            getAVL(3),
+                            getAVL(7, getAVL(6), getAVL(9))
+                            );
+
+        test('should return 7', () => {
+            expect(avltree.leftRotate().root()).toBe(7);
+        });
+
+        test('should return 5', () => {
+            expect(avltree.leftRotate().rightRotate().root()).toBe(5);
+        });
     });
 });
