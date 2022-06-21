@@ -1,19 +1,4 @@
-/**
- * AVL trees
- * 
- * an AVL tree is a self-balancing binary search tree in which the difference in height 
- * between the two subtrees of any node is in the range [-1, 1]
- * 
- * this means every insertion/deletion operation disturbs the balance to [-2, 2] range 
- * and thus it needs to be restored by readjusting (rotating) the node's subtrees
- * 
- * a node in an AVL tree has the same structure as a node in a regular binary search tree 
- * with the addition of a `balance` field which can either be -1, 0, 1
- * 
- * insertion and deletion operations can happen while keeping the trees height at the 
- * minimum `O(log n)` eliminating the need to rebalance the whole tree
- */
- function getAVL () {
+function getAVL () {
     let label = null,
         children,
         bal;
