@@ -1,4 +1,4 @@
-const { getAVL } = require('./avltree.js');
+const { getAVL, insert } = require('./avltree.js');
 
 describe('avl-tree: initial tests', () => {
     let avltree = getAVL();
@@ -191,6 +191,35 @@ describe('avl-tree: core operations', () => {
 
         test('should return 4', () => {
             expect(avltree.left().root()).toBe(4);
+        });
+    });
+
+    describe('avl-tree: insertion', () => {
+        let nodes = [7, 4, 9, 2, 5, 3];
+        let avltree = getAVL();
+
+        for (let n of nodes) {
+            avltree = insert(n, avltree);
+        }
+
+        test('should return 2', () => {
+            expect(avltree.height()).toBe(2);
+        });
+                    
+        test('should return 0', () => {
+            expect(avltree.getBalance()).toBe(0);
+        });
+
+        test('should return 4', () => {
+            expect(avltree.root()).toBe(4);
+        });
+
+        test('should return 7', () => {
+            expect(avltree.right().root()).toBe(7);
+        });
+
+        test('should return 2', () => {
+            expect(avltree.left().root()).toBe(2);
         });
     });
 });
