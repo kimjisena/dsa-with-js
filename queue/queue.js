@@ -1,23 +1,3 @@
-/**
- * queues
- * 
- * a queue is a first-in, first-out data structure where elements are 
- * added and removed to/from the front
- * 
- * it is convenient for scheduling jobs: for instance in an `event loop`
- * 
- * queue constructors
- * 1. `emptyQueue()` - returns an empty queue
- * 2. `queue.push(element)` - returns a queue with element added to the end
- * 
- * queue selectors
- * 1. `queue.top()` - returns the top (front) element of the queue
- * 2. `queue.pop()` - returns the queue without the top (front) element
- * 
- * queue condition
- * - `queue.isEmpty()` - returns false is queue is non-empty
- */
-
 function getQueue() {
     let queue = [];
 
