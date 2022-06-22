@@ -1,17 +1,4 @@
-/**
- * circular doubly linked lists
- * 
- * this is an extension of doubly linked list
- * it is useful when we might need to move efficiently through a whole
- * list of items without starting at a particular endpoint
- * 
- * same operations as a doubly linked list except
- * 
- * - `first.prev` = `last`
- * - `last.next` = `first`
- */
-
- function getCDList () {
+function getCDList () {
 
     let list = [],
         left, right;
