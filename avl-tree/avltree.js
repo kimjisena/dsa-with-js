@@ -18,7 +18,7 @@ function getAVL () {
         };
         bal = getBalance();
     }
-
+    // rebalancing
     if (bal > 1) {
         if (right().getBalance() < 0) {
             return rLRotate();
@@ -136,22 +136,6 @@ function getAVL () {
         return newNode;
     }
 
-    function rebalance () {
-        if (bal === 2) {
-            if (right().getBalance() === -1) {
-                return rLRotate();
-            } else if (right().getBalance() === 1) {
-                return leftRotate();
-            }
-        } else if (bal === -2) {
-            if (left().getBalance() === 1) {
-                return lRRotate();
-            } else if (left().getBalance() === -1) {
-                return rightRotate();
-            }
-        }
-    }
-
     return {
         root,
         isEmpty,
@@ -184,7 +168,41 @@ function insert (v, node) {
     }
 }
 
+function insertAtSmallest(node, des) {
+    if (des.isEmpty()) {
+        return node;
+    } else if (des.left().isEmpty()) {
+        return getAVL(des.root(), node, des.right());
+    }
+    return insertAtSmallest(node, des.left());
+}
+
+// remove a value
+function remove (v, node) {
+    if (node.isEmpty()) {
+        throw {
+            name: 'EmptyTreeError',
+            message: 'Can not access root value of an empty tree'
+        };
+    } else if (v < node.root()) {
+        return getAVL(node.root(), remove(v, node.left()), node.right());
+    } else if (v > node.root()) {
+        return getAVL(node.root(), node.left(), remove(v, node.right()));
+    } else {
+        if (node.left().isEmpty()) {
+            return node.right();
+        } else if (node.right().isEmpty()) {
+            return node.left();
+        } else {
+            return getAVL(node.right().root(), 
+                          insertAtSmallest(node.left(), node.right().left()),
+                          node.right().right());
+        }
+    }
+}
+
 module.exports = {
     getAVL,
     insert,
+    remove
 };

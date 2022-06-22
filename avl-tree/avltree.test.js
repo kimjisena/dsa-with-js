@@ -1,4 +1,4 @@
-const { getAVL, insert } = require('./avltree.js');
+const { getAVL, insert, remove } = require('./avltree.js');
 
 describe('avl-tree: initial tests', () => {
     let avltree = getAVL();
@@ -220,6 +220,51 @@ describe('avl-tree: core operations', () => {
 
         test('should return 2', () => {
             expect(avltree.left().root()).toBe(2);
+        });
+    });
+
+    describe('avl-tree: deletion', () => {
+        let nodes = [15, 12, 23, 9, 13, 19, 25, 16];
+        let avltree = getAVL();
+
+        for (let n of nodes) {
+            avltree = insert(n, avltree);
+        }
+
+        test('should return 3', () => {
+            expect(avltree.height()).toBe(3);
+        });
+
+        test('should return: false, 15, 12, 23, true', () => {
+            // removing a leaf node
+            let removed = remove(9, avltree);
+            expect(removed.isEmpty()).toBe(false);
+            expect(removed.root()).toBe(15);
+            expect(removed.left().root()).toBe(12);
+            expect(removed.right().root()).toBe(23);
+            expect(removed.left().left().isEmpty()).toBe(true);
+        });
+
+        test('should return: false, 15, 12, 23, false, 16', () => {
+            // removing a non-leaf node with one child
+            let removed = remove(19, avltree);
+            expect(removed.isEmpty()).toBe(false);
+            expect(removed.root()).toBe(15);
+            expect(removed.left().root()).toBe(12);
+            expect(removed.right().root()).toBe(23);
+            expect(removed.right().left().isEmpty()).toBe(false);
+            expect(removed.right().left().root()).toBe(16);
+        });
+
+        test('should return: false, 15, 12, 19, 16, 25', () => {
+            // removing a non-leaf node with two children
+            let removed = remove(23, avltree);
+            expect(removed.isEmpty()).toBe(false);
+            expect(removed.root()).toBe(15);
+            expect(removed.left().root()).toBe(12);
+            expect(removed.right().root()).toBe(19);
+            expect(removed.right().left().root()).toBe(16);
+            expect(removed.right().right().root()).toBe(25);
         });
     });
 });
