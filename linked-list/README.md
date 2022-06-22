@@ -1,4 +1,4 @@
-## Linked Lists - Summary
+## Linked Lists
 
 A linked list is an ordered list of elements in which each element has a reference 
 to the next element in the list or to the empty list.

@@ -1,4 +1,4 @@
-## AVL Trees - Summary
+## AVL Trees
 
 An AVL tree (named after Adelson-Velsky and Landis - their inventors) is a self-balancing binary search tree in which the difference in height 
 between the two subtrees of any node is in the range `[-1, 1]`.
