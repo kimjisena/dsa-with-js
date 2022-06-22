@@ -1,24 +1,4 @@
-/**
- * recursive fib vs iterative fib
- * 
- * recursive fib has a time complexity of `O(2^n)` due to the fact that
- * the algorithm gets called twice more than it was called in the previous
- * recursion
- * 
- * the number of recursive calls is the geometric series: 
- * 
- * `1 + 2 + 4 + ... + 2^n` = `2^n - 1` => `O(2^n)`
- * 
- * the second branch of the recursion i.e `recur_fib(n - 2)` recalculates values
- * already calculated by `recur_fib(n - 1)` hence the performance penalty.
- * 
- * we can improve the performance of recursive fib by:
- * 1. memoizing i.e using `memo_recur_fib(n)`
- * 2. using an iterative algorithm with `O(n)` i.e using `iter_fib(n)`
- * 
- */
-
- function recur_fib (n) {
+function recur_fib (n) {
 
     n = (function helper (n) {
         if (n === 0 || n === 1) {

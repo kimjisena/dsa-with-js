@@ -104,7 +104,6 @@ function getList () {
     };
 }
 
-// the empty list
 function emptyList () {
     return getList();
 }
