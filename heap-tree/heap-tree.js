@@ -31,11 +31,7 @@ function getHeap () {
     function parent (index) {
         return Math.floor(index / 2);
     }
-
-    function level (index) {
-        return Math.floor(Math.log2(index)) + 1;
-    }
-
+    
     function lastLeaf () {
         if (isEmpty()) {
             throw {
