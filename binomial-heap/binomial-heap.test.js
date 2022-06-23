@@ -12,3 +12,19 @@ describe('binomial heap: initial tests', () => {
             .toThrow('Can not access elements of empty heap');
     });
 });
+
+describe('binomial heap: insertion', () => { 
+    let nodes = [5, 8, 3, 9, 1, 4, 7, 6, 2];
+    let heap = getBinomialHeap();
+    for (let n of nodes) {
+        heap = heap.insert(n);
+    }
+
+    test('should return false', () => { 
+        expect(heap.isEmpty()).toBe(false);
+    });
+
+    test('should return 9', () => {
+        expect(heap.root()).toBe(9);
+    });
+});

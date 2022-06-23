@@ -1,11 +1,17 @@
 function getBinomialNode (v) {
-    let label = v,
-        children = [],
-        k = 0;
+    let label,
+        children;
 
+    if (typeof arguments[0] === 'object') {
+        label = arguments[0].label;
+        children = arguments[0].children;
+    } else {
+        label = v;
+        children = [];
+    }
 
     function order () {
-        return k;
+        return children.length;
     }
 
     function value () {
@@ -13,8 +19,12 @@ function getBinomialNode (v) {
     }
 
     function add (node) {
-        children[k++] = node;
-        return this;
+        let next = {
+            label,
+            children: [...children, node]
+        };
+
+        return getBinomialNode(next);
     }
 
     return {
@@ -26,7 +36,7 @@ function getBinomialNode (v) {
 
 function getBinomialHeap () {
     let heap = [],
-        top;
+        top = 0;
 
     function isEmpty () {
         return heap.length === 0;
@@ -39,22 +49,22 @@ function getBinomialHeap () {
                 message: 'Can not access elements of empty heap'
             }
         }
-        return heap[top];
+        return heap[top].value();
     }
 
     function merge (a, b) {
         if (a.value() > b.value()) {
-            a = a.add(b);
+            return a.add(b);
         } else {
-            a = b.add(a);
+            return b.add(a);
         }
-        return a;
     }
 
     function insert (element) {
         let n = getBinomialNode(element);
 
         function helper (node) {
+            let i;
             if (heap[node.order()] === undefined) {
                 heap[node.order()] = node;
 
@@ -65,7 +75,12 @@ function getBinomialHeap () {
                 }
                 return;
             } else {
-                node = merge(node, heap[node.order()]);
+                i = node.order();
+                node = merge(node, heap[i]);
+                heap[i] = undefined;
+                if (i === top) {
+                    top = node.order();
+                }
                 helper(node);
             }
         }
