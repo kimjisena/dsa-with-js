@@ -115,13 +115,24 @@ function getHeap () {
         return this;
     }
 
+    function heapify (array) {
+        let n = Math.floor(array.length / 2);
+        heap = [null, ...array];
+        last = array.length;
+        for (let i = n; i > 0; i--) {
+            bubbleDown(i);
+        }
+        return this;
+    }
+
     return {
         isEmpty,
         root,
         lastLeaf,
         insert,
         deleteRoot,
-        deleteAt
+        deleteAt,
+        heapify
     };
 }
 

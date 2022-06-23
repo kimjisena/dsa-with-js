@@ -72,3 +72,16 @@ describe('heap tree: deletion', () => {
         expect(deleted.lastLeaf()).toBe(10);
     });
 });
+
+describe('heap tree from array efficiently', () => { 
+    let nodes = [5, 8, 3, 9, 1, 4, 7, 6, 2];
+    let heap = getHeap().heapify(nodes);
+
+    test('should return 9', () => {
+        expect(heap.root()).toBe(9);
+    });
+
+    test('should return 2', () => {
+        expect(heap.lastLeaf()).toBe(2);
+    });
+});
