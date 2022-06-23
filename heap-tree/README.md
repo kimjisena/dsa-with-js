@@ -30,9 +30,9 @@ following conditions:
 **heap tree accessors**
 
 1. `heap.root()` - returns the `root` of the `heap`
-2. `heap.lastLeaf()` - returns the element last inserted
+4. `heap.lastLeaf()` - returns the `element` at the end of the `heap`
 
 **heap tree mutators**
 
-1. `insert(p, heap)` - inserts priority `p` into `heap`
+1. `heap.insert(element)` - inserts `element` into  the `heap`
 2. `delete(i, heap)` - deletes element at index `i` from `heap`
