@@ -41,3 +41,34 @@ describe('heap tree: insertion', () => {
         expect(inserted.root()).toBe(120);
     });
 });
+
+describe('heap tree: deletion', () => {
+    let nodes = [96, 90, 70, 80, 75, 42, 60, 17, 44, 10, 72, 14];
+    let heap = getHeap();
+    for (let n of nodes) {
+        heap = heap.insert(n);
+    }
+
+    test('should return false', () => { 
+        expect(heap.isEmpty()).toBe(false);
+    });
+
+    test('should return: 90, 72', () => {
+        let deleted = heap.deleteRoot();
+        expect(deleted.root()).toBe(90);
+        expect(deleted.lastLeaf()).toBe(72);
+    });
+
+    test('should return: 96, 10', () => {
+        let nodes = [96, 90, 70, 80, 75, 42, 60, 17, 44, 10, 72];
+        let heap = getHeap();
+        let deleted;
+        for (let n of nodes) {
+            heap = heap.insert(n);
+        }
+
+        deleted = heap.deleteAt(2);
+        expect(deleted.root()).toBe(96);
+        expect(deleted.lastLeaf()).toBe(10);
+    });
+});
