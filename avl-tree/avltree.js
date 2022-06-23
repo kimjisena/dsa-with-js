@@ -168,6 +168,7 @@ function insert (v, node) {
     }
 }
 
+// util: inserts `node` at the leftmost of `des`
 function insertAtSmallest(node, des) {
     if (des.isEmpty()) {
         return node;
