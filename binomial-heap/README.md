@@ -13,13 +13,15 @@ A binomial tree of order `k` has:
 - `height`= `k`
 - `node`s = `2^k`
 
+The number of nodes `n` at a given height `r` of a binomial tree of order `k` obey the binomial theorem for a positive integral index i.e `n = kCr`
+
 A **binomial heap** is constructed as a collection of binomial trees with these 
 properties:
 1. There can only be `zero` or `one` binomial tree of each order
 2. Each constituent binomial tree must satisfy the priority ordering 
 property i.e each node must have priority less than or equal to its parent 
 
-**operation**
+**core operations**
 
 The most important operation for binomial heaps is `merge` which can be used to 
 implement `insertion` and `deletion`.
