@@ -54,7 +54,7 @@ function getBinomialHeap () {
                 message: 'Can not access elements of empty heap'
             }
         }
-        return heap;
+        return heap[top].value();
     }
 
     function updateTop () {

@@ -42,27 +42,7 @@ describe('binomial heap: deletion', () => {
         expect(heap.isEmpty()).toBe(false);
     });
 
-    test('should return 9', () => {
-        expect((heap.root())[0]).toBe(null);
-    });
-
-    test('should return -Infinity', () => {
-        expect((heap.root())[1]).toBe(null);
-    });
-
-    test('should return -Infinity', () => {
-        expect((heap.root())[2]).toBe(null);
-    });
-
-    test('should return -Infinity', () => {
-        expect(((heap.root())[3].getChildren())[0].value()).toBe(5);
-    });
-
-    test('should return -Infinity', () => {
-        expect(((heap.root())[3].getChildren())[1].value()).toBe(3);
-    });
-
-    test('should return -Infinity', () => {
-        expect(((heap.root())[3].getChildren())[2].value()).toBe(7);
+    test('should return 8', () => {
+        expect(heap.root()).toBe(8);
     });
 });
