@@ -114,7 +114,6 @@ function getBinomialHeap () {
             newHeap;
 
         children =  heap[top].getChildren();
-        //console.log(children);
         topNode = {
             label: -Infinity,
             children: [...children]
@@ -130,11 +129,21 @@ function getBinomialHeap () {
         return newHeap;
     }
 
+    function heapify (array) {
+        let heap = getBinomialHeap();
+        for (let element of array) {
+            heap = heap.insert(element);
+        }
+
+        return heap;
+    }
+
     return {
         isEmpty,
         root,
         insert,
         deleteRoot,
+        heapify
     };
 }
 

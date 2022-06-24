@@ -46,3 +46,16 @@ describe('binomial heap: deletion', () => {
         expect(heap.root()).toBe(8);
     });
 });
+
+describe('binomial heap: heap from an array', () => { 
+    let nodes = [5, 8, 3, 9, 1, 4, 7, 6, 2];
+    let heap = getBinomialHeap().heapify(nodes);
+
+    test('should return false', () => { 
+        expect(heap.isEmpty()).toBe(false);
+    });
+
+    test('should return 9', () => {
+        expect(heap.root()).toBe(9);
+    });
+});

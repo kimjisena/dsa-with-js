@@ -34,9 +34,9 @@ following conditions:
 
 **heap tree mutators**
 
-1. `heap.insert(element)` - inserts `element` into  the `heap`
-2. `heap.deleteRoot()` - deletes the `root` of the `heap`
-3. `heap.deleteAt(index)` - deletes element at `index` from `heap`
+1. `heap.insert(element)` - inserts `element` into  the `heap`: `O(logn)`
+2. `heap.deleteRoot()` - deletes the `root` of the `heap`: `O(logn)`
+3. `heap.deleteAt(index)` - deletes element at `index` from `heap`: `O(logn)`
 
 **heap tree constructor**
-- `heap.heapify(array)` - returns a heap from `array`
+- `heap.heapify(array)` - returns a heap from `array` : `O(n)`

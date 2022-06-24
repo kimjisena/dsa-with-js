@@ -22,9 +22,18 @@ properties:
 2. Each constituent binomial tree must satisfy the priority ordering 
 property i.e each node must have priority less than or equal to its parent 
 
-**core operations**
+**core operation**
 
 The most important operation for binomial heaps is `merge` which can be used to 
 implement `insertion` and `deletion`.
 
 Two binomial trees of order `j` are `merge`d to form a binomial tree of order `j + 1`
+
+**heap tree mutators**
+
+1. `heap.insert(element)` - inserts `element` into  the `heap`: `O(1)`
+2. `heap.deleteRoot()` - deletes the `root` of the `heap`: `O(logn)`
+
+**heap tree constructor**
+
+- `heap.heapify(array)` - returns a heap from `array`: `O(n)`
