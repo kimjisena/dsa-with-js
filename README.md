@@ -20,18 +20,21 @@ of the web.
 3. Implement common DSAs using JavaScript
 
 ## Contents
-#### 0. [Linked lists](./linked-list/)
-#### 1. [Doubly-linked lists](./doubly-linked-list/)
-#### 2. [Circular doubly-linked lists](./circular-doubly-linked-list/)
-#### 3. [Stacks](./stack/)
-#### 4. [Queues](./queue/)
-#### 5. [Linear search](./linear-search/)
-#### 6. [Binary search](./binary-search/)
+#### 0. [Linked lists](./basic/linked-list/)
+#### 1. [Doubly-linked lists](./basic/doubly-linked-list/)
+#### 2. [Circular doubly-linked lists](./basic/circular-doubly-linked-list/)
+#### 3. [Stacks](./basic/stack/)
+#### 4. [Queues](./basic/queue/)
+#### 5. [Linear search](./search/linear-search/)
+#### 6. [Binary search](./search/binary-search/)
 #### 7. [Recursion](./recursion/)
-#### 8. [Binary trees](./binary-tree/)
-#### 9. [Quad trees](./quad-tree/)
-#### 10. [Binary search trees](./binary-search-tree/)
-#### 11. [AVL trees](./avl-tree/)
+#### 8. [Binary trees](./trees/binary-tree/)
+#### 9. [Quad trees](./trees/quad-tree/)
+#### 10. [Binary search trees](./trees/binary-search-tree/)
+#### 11. [AVL trees](./trees/avl-tree/)
+#### 12. [2-3 Trees](./trees/two-three-tree/)
+#### 13. [Binary Heap Tree](./heaps/heap-tree/)
+#### 14. [Binomial Heap](./heaps/binomial-heap/)
 
 ## Chatter
 JavaScript is such an expressive language if one truly knows what they are doing. I've been 
