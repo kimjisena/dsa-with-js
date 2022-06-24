@@ -1,6 +1,6 @@
 function getBinomialNode (v) {
     let label,
-        children;
+        children = [];
 
     if (typeof arguments[0] === 'object') {
         label = arguments[0].label;
@@ -27,10 +27,15 @@ function getBinomialNode (v) {
         return getBinomialNode(next);
     }
 
+    function getChildren () {
+        return children;
+    }
+
     return {
         order,
         value,
-        add
+        add,
+        getChildren,
     };
 }
 
@@ -49,7 +54,15 @@ function getBinomialHeap () {
                 message: 'Can not access elements of empty heap'
             }
         }
-        return heap[top].value();
+        return heap;
+    }
+
+    function updateTop () {
+        for (let i = 0; i < heap.length; i++) {
+            if (heap[i] !== null) {
+                top = heap[top].value() > heap[i].value() ? top : i;
+            }
+        }
     }
 
     function merge (a, b) {
@@ -61,11 +74,17 @@ function getBinomialHeap () {
     }
 
     function insert (element) {
-        let n = getBinomialNode(element);
-
+        let n;
+        if (typeof element === 'object') {
+            n = element;
+        } else {
+            n = getBinomialNode(element);
+        }
         function helper (node) {
             let i;
-            if (heap[node.order()] === undefined) {
+            if (heap[node.order()] === undefined || 
+                heap[node.order()] === null) {
+
                 heap[node.order()] = node;
 
                 if (heap.length === 1) {
@@ -77,7 +96,7 @@ function getBinomialHeap () {
             } else {
                 i = node.order();
                 node = merge(node, heap[i]);
-                heap[i] = undefined;
+                heap[i] = null;
                 if (i === top) {
                     top = node.order();
                 }
@@ -88,10 +107,34 @@ function getBinomialHeap () {
         return this;
     }
 
+    function deleteRoot () {
+        let children,
+            topNode,
+            prevTop,
+            newHeap;
+
+        children =  heap[top].getChildren();
+        //console.log(children);
+        topNode = {
+            label: -Infinity,
+            children: [...children]
+        };
+        topNode = getBinomialNode(topNode);
+        heap[top] = topNode;
+        prevTop = top;
+        updateTop();
+        heap[prevTop] = null;
+        for (let child of children) {
+            newHeap = this.insert(child);
+        }
+        return newHeap;
+    }
+
     return {
         isEmpty,
         root,
         insert,
+        deleteRoot,
     };
 }
 

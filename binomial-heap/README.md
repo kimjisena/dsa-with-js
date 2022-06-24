@@ -13,7 +13,8 @@ A binomial tree of order `k` has:
 - `height`= `k`
 - `node`s = `2^k`
 
-The number of nodes `n` at a given height `r` of a binomial tree of order `k` obey the binomial theorem for a positive integral index i.e `n = kCr`
+The number of nodes `n` at a given height `r` of a binomial tree of order `k` obey 
+the binomial theorem for a positive integral index i.e `n = kCr`
 
 A **binomial heap** is constructed as a collection of binomial trees with these 
 properties:
