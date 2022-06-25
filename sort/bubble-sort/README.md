@@ -18,3 +18,5 @@ continues this way until all items are sorted.
 **bonus**: It's called _bubble sort_ because data _"bubbles"_ to the top. It 
 may as well be called _sink sort_ because data at the top _"sinks"_ to the 
 bottom.
+
+**bonus++**: Never use bubble sort. You're better off avoiding it altogether.
