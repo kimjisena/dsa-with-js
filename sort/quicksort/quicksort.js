@@ -20,12 +20,42 @@ function quickSort2 (array) {
                 .push(array.length - 1)
                 .push(0);
 
-        while(!stack.isEmpty()) {
-            left = stack.top();
-            stack = stack.pop();
-            right = stack.top();
-            stack = stack.pop();
+    while(!stack.isEmpty()) {
+        left = stack.top();
+        stack = stack.pop();
+        right = stack.top();
+        stack = stack.pop();
 
+        if (left < right) {
+            pivotIdx = partition(array, left, right);
+            stack = stack.push(right)
+                    .push(pivotIdx + 1)
+                    .push(pivotIdx - 1)
+                    .push(left);
+        }
+    }
+
+    return array;
+}
+
+function quickSort3 (array) {
+    let pivotIdx, left, right, min, size;
+    let stack = emptyStack()
+                .push(array.length - 1)
+                .push(0);
+    
+    min = 5;
+    while(!stack.isEmpty()) {
+        left = stack.top();
+        stack = stack.pop();
+        right = stack.top();
+        stack = stack.pop();
+        size = right - left + 1;
+
+        if (size < min) {
+            //use insertion sort
+        } else {
+            // use quicksort
             if (left < right) {
                 pivotIdx = partition(array, left, right);
                 stack = stack.push(right)
@@ -34,9 +64,11 @@ function quickSort2 (array) {
                         .push(left);
             }
         }
+    }
 
-        return array;
+    return array;
 }
+
 
 function partition (array, left, right) {
     let pivot,
@@ -73,5 +105,6 @@ function partition (array, left, right) {
 
 module.exports = {
     quickSort,
-    quickSort2
+    quickSort2,
+    quickSort3
 };
