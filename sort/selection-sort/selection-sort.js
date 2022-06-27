@@ -13,6 +13,8 @@ function selectionSort (array) {
         array[i] = array[k];
         array[k] = temp;
     }
+
+    return array;
 }
 
 module.exports = {
