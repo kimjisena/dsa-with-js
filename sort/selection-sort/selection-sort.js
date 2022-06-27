@@ -1,5 +1,7 @@
 function selectionSort (array) {
-    let k, temp;
+    let k, temp,
+        n = array.length;
+
     for (let i = 0; i < n - 1; i++) {
         k = i;
         for (let j = i + 1; j < n; j++) {
@@ -12,3 +14,7 @@ function selectionSort (array) {
         array[k] = temp;
     }
 }
+
+module.exports = {
+    selectionSort,
+};
