@@ -9,5 +9,7 @@ as these operations can be carried efficiently.
 
 **note**: of course, the tree will have to balanced.
 
+**data structure**: `Array`/`Binary search tree`
+
 **time complexity**: `O(nlog n)`
 - `n` items to insert at a cost of `O(log n)` per item
