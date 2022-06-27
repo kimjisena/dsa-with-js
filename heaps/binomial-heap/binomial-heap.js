@@ -111,7 +111,7 @@ function getBinomialHeap () {
         let children,
             topNode,
             prevTop,
-            newHeap;
+            newHeap = getBinomialHeap();
 
         children =  heap[top].getChildren();
         topNode = {

@@ -1,6 +1,6 @@
 const {heapSort} = require('./heap-sort.js');
 
-describe('tree sort tests', () => { 
+describe('heap sort tests', () => { 
     let nodes = [8, 3, 1, 6, 7, 11, 14, 9, 10, 12, 15];
 
     test('should return a sorted array', () => {
