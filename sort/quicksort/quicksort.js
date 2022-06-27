@@ -13,7 +13,7 @@ function quickSort (array, left, right) {
     return array;
 }
 
-// iterative using stack
+// iterative using a stack
 function quickSort2 (array) {
     let pivotIdx, left, right;
     let stack = emptyStack()
@@ -50,11 +50,11 @@ function partition (array, left, right) {
 
     while (true) {
         while (array[++i] < pivot) {
-            null;
+            ;
         }
 
         while (array[--j] > pivot) {
-            null;
+            ;
         }
         if (i >= j) {
             break;
