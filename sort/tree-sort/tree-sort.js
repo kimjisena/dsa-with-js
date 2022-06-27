@@ -6,6 +6,7 @@ function treeSort (array) {
         bstree = insert(array[i], bstree);
     }
     fillArray(bstree, array, 0);
+    return array;
 }
 
 function fillArray (bstree, array, idx) {
