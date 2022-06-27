@@ -18,4 +18,6 @@ It continues that way until all items are sorted.
 
 **data structure**: `Array`
 
-**bonus**: performance is not affected by the composition of the dataset
+**bonus**
+- performance is not affected by the composition of the dataset
+- can be used for datasets with large records and small keys
