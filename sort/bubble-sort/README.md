@@ -3,15 +3,16 @@
 Bubble sort is an `exchange sort` algorithm i.e it compares two items and 
 swaps their positions if they're in the wrong order.
 
-Consider an array `a` of `n` items that need sorting. Bubble sort starts 
-at `n-1` and compares item `a[n-1]` with item `a[n-2]` and swaps them if 
-need be.
+Given an `array` of `n` elements:
+- Step through the `array` comparing adjacent elements
+- If they're out of order, exchange them
+- When you complete the entire scan without switching elements, the data is 
+sorted, terminate.
 
-At the end of this iteration, it will compare `a[1]` with `a[0]` 
-and swap them accordingly. This means item `a[0]` will now be in place. It 
-continues this way until all items are sorted.
+**stability**: stable
 
 **time complexity**: `O(n^2)`
+- if dataset is already sorted, `O(n)`
 
 **data structure**: `Array`
 

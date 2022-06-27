@@ -12,8 +12,12 @@ are <= `array[i]`, and all elements `array[i + 1]`, ..., `array[n - 1]` >= `arra
 - Recursively apply the algorithm on the two subarrays until all elements are sorted
 
 **time complexity**
-- Average case: `O(nlogn)`
+- Average case: `O(nlog n)`
 - Worst case (the dataset is already sorted): `O(n^2)`
+
+**stability**: not stable
+
+**data structure**: `Array`
 
 **improvements**
 - Using iteration instead of recursion as in `quickSort2()`
