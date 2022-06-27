@@ -1,4 +1,5 @@
 const {emptyStack} = require('../../basic/stack/stack.js');
+const {insertionSort2} = require('../insertion-sort/insertion-sort.js');
 
 // recursive
 function quickSort (array, left, right) {
@@ -44,7 +45,7 @@ function quickSort3 (array) {
                 .push(array.length - 1)
                 .push(0);
     
-    min = 5;
+    min = 3;
     while(!stack.isEmpty()) {
         left = stack.top();
         stack = stack.pop();
@@ -54,6 +55,7 @@ function quickSort3 (array) {
 
         if (size < min) {
             //use insertion sort
+            insertionSort2(array, left, right);
         } else {
             // use quicksort
             if (left < right) {

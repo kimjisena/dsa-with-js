@@ -21,5 +21,6 @@ are <= `array[i]`, and all elements `array[i + 1]`, ..., `array[n - 1]` >= `arra
 
 **improvements**
 - Using iteration instead of recursion as in `quickSort2()`
-- Using `insertionSort()` when subarrays become smaller than `m <<< n`
+- Using `insertionSort()` when subarrays become smaller than `m <<< n` 
+as in `quickSort2()`
 - Using _the median of three_ to determine the `pivot`
