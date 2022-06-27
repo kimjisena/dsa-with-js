@@ -71,7 +71,6 @@ function quickSort3 (array) {
     return array;
 }
 
-
 function partition (array, left, right) {
     let pivot,
         i,
