@@ -1,4 +1,7 @@
-function quickSort(array, left, right) {
+const {emptyStack} = require('../../basic/stack/stack.js');
+
+// recursive
+function quickSort (array, left, right) {
     let pivotIdx;
 
     if (left < right) {
@@ -10,49 +13,65 @@ function quickSort(array, left, right) {
     return array;
 }
 
-function choosePivot (left, right) {
-    return Math.floor(Math.random() * (right - left + 1));
-    //return Math.floor((right - left + 1)/2);
+// iterative using stack
+function quickSort2 (array) {
+    let pivotIdx, left, right;
+    let stack = emptyStack()
+                .push(array.length - 1)
+                .push(0);
+
+        while(!stack.isEmpty()) {
+            left = stack.top();
+            stack = stack.pop();
+            right = stack.top();
+            stack = stack.pop();
+
+            if (left < right) {
+                pivotIdx = partition(array, left, right);
+                stack = stack.push(right)
+                        .push(pivotIdx + 1)
+                        .push(pivotIdx - 1)
+                        .push(left);
+            }
+        }
+
+        return array;
 }
 
 function partition (array, left, right) {
-    let pivotIdx,
-        pivot,
+    let pivot,
         i,
         j,
         temp;
 
-    //pivotIdx = choosePivot(left, right);
+    pivot = array[right];
+    i = left - 1;
+    j = right;
 
-    if (right > left) {
-        pivot = array[right];
-        i = left - 1;
-        j = right;
-
-        while (true) {
-            while (array[++i] < pivot) {
-                null;
-            }
-
-            while (array[--j] > pivot) {
-                null;
-            }
-            if (i >= j) {
-                break;
-            }
-            temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+    while (true) {
+        while (array[++i] < pivot) {
+            null;
         }
 
+        while (array[--j] > pivot) {
+            null;
+        }
+        if (i >= j) {
+            break;
+        }
         temp = array[i];
-        array[i] = array[right];
-        array[right] = temp;
+        array[i] = array[j];
+        array[j] = temp;
     }
+
+    temp = array[i];
+    array[i] = array[right];
+    array[right] = temp;
 
     return i;
 }
 
 module.exports = {
     quickSort,
+    quickSort2
 };
